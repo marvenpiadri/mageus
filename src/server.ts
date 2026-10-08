@@ -1,4 +1,8 @@
-import { AngularNodeAppEngine, createNodeRequestHandler, writeResponseToNodeResponse } from '@angular/ssr/node';
+import {
+  AngularNodeAppEngine,
+  createNodeRequestHandler,
+  writeResponseToNodeResponse
+} from '@angular/ssr/node';
 import express from 'express';
 
 const app = express();
