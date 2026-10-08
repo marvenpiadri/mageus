@@ -1,0 +1,21 @@
+<!-- <app-edit_article *ngIf="editBol"></app-edit_article> -->
+
+<div class="articleContainerScroll">
+ 
+   
+  <div class="articleContainerAlpha">
+    <app-article [data]="post"></app-article>
+  </div>
+
+  <a routerLink="../../" routerLinkActive="active">
+    <div class="closeWindow">
+        <i class="fas fa-times"></i>
+      </div>
+  </a>
+</div>
+<!-- 
+<div class="postsDoesntExists" *ngIf="!article?.article_id">
+  <div class="postsZeromsg">
+    <i class="fas fa-meh-rolling-eyes"></i> Couldn't find any articles
+  </div>
+</div> -->

@@ -1,0 +1,265 @@
+
+<div class="commentsCtn">
+
+  <div class="commentHeader">
+    <div class="commentTitle">
+      Comments
+      <div class="commentCount">{{data?.comments}}</div>
+    </div>
+  </div>
+
+  <div class="commentRelativeCtn">
+    <div class="deckQuestionsData"
+    infiniteScroll
+    [infiniteScrollDistance]="2"
+    [infiniteScrollThrottle]="50"
+    [scrollWindow]="false"
+    (scrolled)="showMoreComments()">
+     
+      <div class="postMiddleGrid">
+
+        <div class="commentTextInp">
+          <textarea 
+          matInput
+          [maxlength]="1500"
+          [(ngModel)]="comment"
+          cdkTextareaAutosize
+          #autosize="cdkTextareaAutosize"
+          cdkAutosizeMinRows="2"
+          placeholder="Write a Comment..."></textarea>
+          <div class="askButtons">
+            <div class="textLimit">{{ 1500 - comment.length }}</div>
+            <div></div>
+            <div class="askInitiateButtonTxtArea" (click)="postComment(2, $event)">Comment</div>
+          </div>
+        </div>
+
+        <div class="commentRollingCtn">
+          <div class="deckPost_Q_A" *ngFor="let comment of comments; let ind = index">
+          
+            <div class="DeckQ_D_A">
+              
+              <div class="dsq-ctnM">
+          
+                <div class="dsq-header">
+                  <div class="dsq-header-grid">
+        
+                    <div class="dsq-header-prof">
+                      <a routerLink="/{{comment.username}}">
+                        <div class="dsq-header-pic"> 
+                          <img src="{{IMG_URL+comment.pic+'?width=50'}}"> 
+                        </div>
+                      </a>
+                      <div class="profileCommentLine"></div>
+                    </div>
+        
+                    <div class="commentsCtnTop">
+                      <div class="commentMainCtn">
+                        <div class="commentsHeader" *ngIf="!comment.edit">
+                          <a routerLink="/{{comment.username}}">{{comment.username}}</a>
+                          <span class="commentText"> {{comment.comment}} </span>
+                        </div>
+          
+                        <div class="commentTextInp" *ngIf="comment.edit">
+                          <textarea 
+                          matInput
+                          [maxlength]="1500"
+                          [(ngModel)]="comment.edit"
+                          cdkTextareaAutosize
+                          #autosize="cdkTextareaAutosize"
+                          cdkAutosizeMinRows="2"
+                          placeholder="Comment..."></textarea>
+                          <div class="askButtons">
+                            <div class="textLimit">{{ 1500 - comment.edit.length }}</div>
+                            <div></div>
+                            <div class="askInitiateButtonTxtArea" (click)="commentEdit(2, $event, ind)">Save</div>
+                          </div>
+                        </div>
+        
+                        <div class="commentsOptions">
+                          <div class="optBar">
+            
+                            <div class="q_a_threadAvg">
+                              <div class="{{comment.istars > 0 ?'qsStarOn':'qsStarOff'}}" (click)="commentRate(comment.comment_id, ind)"> 
+                                <i class="{{comment.istars > 0 ? 'fas fa-star':'fa-regular fa-star'}} "></i> 
+                              </div>
+                              {{comment.voters ? comment.voters : 0}}
+                            </div>
+            
+                          </div> 
+          
+                          <div class="commentTime">
+                            {{ comment.comment_time | date:'MMM d, y, h:mm a'}} 
+                          </div>
+          
+                          <div #editButtons 
+                          (click)="displayEditCont(ind)" 
+                          cdkOverlayOrigin 
+                          #trigger="cdkOverlayOrigin"
+                          class="{{ comment.options ? 'postEditShortOn' : 'postEditShort'}}">
+                            <i class="fas fa-ellipsis-h"></i>
+                          </div>
+
+                          <ng-template 
+                          cdkConnectedOverlay
+                          [cdkConnectedOverlayOrigin]="trigger"
+                          [cdkConnectedOverlayOpen]="comment.options"
+                          [cdkConnectedOverlayPositions]="positions"
+                          [cdkConnectedOverlayHasBackdrop]="true"
+                          (backdropClick)="comment.options = false"
+                          #tempref
+                          (click)="$event.stopPropagation()">
+                          <div class="optionsContainer">
+                            <!-- <div class="listWhite" *ngIf="post.u1_username == userOwner.username" (click)="add_to_magazine(i)" ng-template-item>
+                              <i class="fa-solid fa-layer-group"></i> Add to magazne 
+                            </div> -->
+                            <div class="listWhite" *ngIf="comment.username == iUsername" (click)="edit_post(ind)" ng-template-item>
+                              <i class="fas fa-pen"></i> Edit Comment
+                            </div>
+                            <div class="listRed" *ngIf="comment.username == iUsername" (click)="delete_post(ind)" mat-menu-item>
+                              <i class="fas fa-trash"></i> Delete Comment
+                            </div>
+                            <div class="listRed" ng-template-item>
+                              <i class="fas fa-flag"></i> report Comment
+                            </div>
+                          </div>
+                          </ng-template>
+          
+                        </div>
+        
+                      </div>
+                      
+                      <div class="showMoreButton" *ngIf="comment.replies > 5" 
+                        (click)="showMoreReplies(ind, comment.comment_id, comment.article_id, comment.ownerid)"> Show More {{comment.replies}} 
+                        <i class="fas fa-caret-down"></i> 
+                      </div>
+
+                      <div class="answersGridCtn">
+                        <div class="answerUsersCtn" *ngFor="let answer of comment.answers; let ind_2 = index">
+          
+                          <div class="dsq-header-grid_2">
+          
+                            <div class="dsq-header-prof">
+                              <a routerLink="/{{answer.username}}">
+                                <div class="dsq-header-pic_2"> 
+                                  <img src="{{IMG_URL+answer.pic+'?width=50'}}"> 
+                                </div>
+                              </a>
+                              <div class="profileAnswerLine"></div>
+                            </div>
+                
+                            <div class="commentsCtnSub">
+                              
+                              <div class="commentMainCtnTop">
+                                <div class="commentsHeader" *ngIf="!answer.edit">
+                                  <a routerLink="/{{answer.username}}">{{answer.username}}</a>
+                                  <span class="commentReplyText"> {{answer.comment}} </span>
+                                </div>
+          
+                                <div class="commentTextInp" *ngIf="answer.edit">
+                                  <textarea 
+                                  matInput
+                                  [maxlength]="1500"
+                                  [(ngModel)]="answer.edit"
+                                  cdkTextareaAutosize
+                                  #autosize="cdkTextareaAutosize"
+                                  cdkAutosizeMinRows="2"
+                                  placeholder="Comment..."></textarea>
+                                  <div class="askButtons">
+                                    <div class="textLimit">{{ 1500 - answer.edit.length }}</div>
+                                    <div></div>
+                                    <div class="askInitiateButtonTxtArea" (click)="replyEdit(1, $event, ind, ind_2)">Reply</div>
+                                  </div>
+                                </div>
+            
+                                <div class="commentsOptions">
+                
+                                  <div class="optBar">
+
+                                    <div class="q_a_threadAvg">
+                                      <div class="{{answer.istars > 0 ? 'qsStarOn':'qsStarOff'}}" (click)="answerRate(answer.comment_id, ind, ind_2)"> 
+                                        <i class="{{answer.istars > 0 ? 'fas fa-star':'fa-regular fa-star'}}"></i> 
+                                      </div>
+                                      {{answer.voters ? answer.voters : 0}}
+                                    </div>
+                    
+                                  </div> 
+                  
+                                  <div class="commentTime">{{ answer.comment_time | date:'MMM d, y, h:mm a'}}</div>
+                  
+                                  <div #editButtons 
+                                  (click)="displaySubEditCont(ind, ind_2)" 
+                                  cdkOverlayOrigin #trigger="cdkOverlayOrigin"
+                                  class="{{ answer?.options ? 'postEditShortOn' : 'postEditShort'}}">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                  </div>
+
+                                  <ng-template 
+                                  cdkConnectedOverlay
+                                  [cdkConnectedOverlayOrigin]="trigger"
+                                  [cdkConnectedOverlayOpen]="answer.options"
+                                  [cdkConnectedOverlayPositions]="positions"
+                                  [cdkConnectedOverlayHasBackdrop]="true"
+                                  (backdropClick)="answer.options = false"
+                                  #tempref
+                                  (click)="$event.stopPropagation()">
+                                  <div class="optionsContainer">
+                                    <!-- <div class="listWhite" *ngIf="post.u1_username == userOwner.username" (click)="add_to_magazine(i)" ng-template-item>
+                                      <i class="fa-solid fa-layer-group"></i> Add to magazne 
+                                    </div> -->
+                                    <div class="listWhite" *ngIf="answer.username == iUsername" (click)="edit_sub_comment(ind, ind_2)" ng-template-item>
+                                      <i class="fas fa-pen"></i> Edit Reply 
+                                    </div>
+                                    <div class="listRed" *ngIf="answer.username == iUsername" (click)="delete_sub_post(ind, ind_2)" mat-menu-item>
+                                      <i class="fas fa-trash"></i> Delete Reply 
+                                    </div>
+                                    <div class="listRed" ng-template-item>
+                                      <i class="fas fa-flag"></i> Report Reply
+                                    </div>
+                                  </div>
+                                  </ng-template>
+          
+                                </div>
+                              </div>
+          
+                            </div>
+          
+                          </div>
+                          
+          
+                        </div>
+                      </div>
+
+                      
+                      <div class="commentTextInp">
+                        <textarea 
+                        matInput
+                        [maxlength]="1500"
+                        [(ngModel)]="comment.reply"
+                        cdkTextareaAutosize
+                        #autosize="cdkTextareaAutosize"
+                        cdkAutosizeMinRows="2"
+                        placeholder="Write a Reply..."></textarea>
+                        <div class="askButtons">
+                          <div class="textLimit">{{ 1500 - comment?.reply?.length }}</div>
+                          <div></div>
+                          <div class="askInitiateButtonTxtArea" (click)="commentReply($event, ind)">Reply</div>
+                        </div>
+                      </div>
+
+                    </div>
+        
+                  </div>
+                </div>
+            
+              </div>
+        
+            </div>
+        
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+</div>

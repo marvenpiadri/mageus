@@ -1,0 +1,79 @@
+<section class="dataInputCtn" #sliderUpload >
+  <div class="dataInputs">
+    <div class="cdkDropListCtn"
+      cdkDropList
+      (cdkDropListDropped)="dragMoved($event)">
+
+      <div class="{{postError ? 'uploaderSelectOptionsGridError' : 'uploaderSelectOptionsGrid'}}">
+        <div class="uploaderSelectFile">
+          <input type="file" name="upload" id="previewSlideImage" (change)="previewSlideImage($event)" multiple>
+          <label for="previewSlideImage"> <i class="fas fa-plus"></i>  </label> 
+        </div>
+      </div>
+
+      <div class="cdkDragCtnSlider" *ngIf="slides.length > 0">
+        <div class="cdkDragMainFlex">
+          <ul class="cdkDragCtn">
+            <li cdkDrag class="cdkDragHolding" *ngFor="let pic of slides; let ind = index;">
+              <div class="sliderImagePreview">
+                <div class="uploaderPhotographContainer"  [style.width.px]="postPrev_width" [style.height.px]="postPrev_height">
+                  <!-- <div class="postPrev_height" (click)="removePic(ind)"><i class="fas fa-trash"></i></div> -->
+                  <!-- <img src="{{IMG_URL + pic?.pic}}"> -->
+                  <ng-container *ngIf="pic.loading; else imageContent">
+                    <div class="imageUploadProgress">
+                      <div class="progressBar">
+                        <div class="progressBarFill" [style.width.%]="pic.progress"></div>
+                      </div>
+                      <span>{{ pic.progress }}%</span>
+                    </div>
+                  </ng-container>
+                  <ng-template #imageContent>
+                    <img [src]="IMG_URL + pic.pic+'?width='+postPrev_height" />
+                  </ng-template>
+                </div>
+                <div class="contentInputCtn">
+
+                  <p-iconfield iconPosition="left">
+                    <p-inputicon class="pi pi-tag" />
+                    <input type="text" 
+                    icon=""
+                    class="article_textArea" 
+                    cdkTextareaAutosize
+                    cdkAutosizeMinRows="1"
+                    cdkAutosizeMaxRows="5"
+                    pInputText [(ngModel)]="pic.label" 
+                    placeholder="Slide's Label">
+                  </p-iconfield>
+
+                  <p-iconfield iconPosition="left">
+                    <p-inputicon class="pi pi-link" />
+                    <input type="text" 
+                    class="article_textArea" 
+                    cdkTextareaAutosize
+                    cdkAutosizeMinRows="1"
+                    cdkAutosizeMaxRows="5"
+                    pInputText [(ngModel)]="pic.link" 
+                    placeholder="Slide's Link">
+                  </p-iconfield>
+
+
+                  <div class="contentOptions">
+                    <div class="slideOptionItem cancel" (click)="removePic(ind)"><i class="fas fa-times"></i> remove</div>
+                    <div class="slideOptionItem" (click)="duplicateSlide(ind)"><i class="fas fa-clone"></i> Duplicate</div>
+                  </div>
+                </div>
+              </div>
+              <div class="dragPlaceHolder" [style.height.px]="postPrev_height+22" *cdkDragPlaceholder></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="saveBtnCtn">
+    <button class="saveSlidesBtn" (click)="saveSlides()">
+      <i class="pi pi-save"></i> Save Slides
+    </button>
+  </div>
+</section>

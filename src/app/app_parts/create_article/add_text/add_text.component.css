@@ -1,0 +1,402 @@
+.articlePartCtn iframe {
+    height: 100% !important;
+    width: 100% !important;
+    margin-bottom: 25px !important;
+    border-radius: 10px !important;
+}
+button.p-element.p-button.p-component {
+    grid-gap: 10px;
+    align-items: center;
+}
+.articleCtnScroll{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+.ql-toolbar.ql-snow{
+    border: 2px solid rgb(255 255 255 / 30%) !important;
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    border-radius: 5px;
+}
+.toolBarContainer{
+    position: sticky;
+    z-index: 222222;
+    background: #000;
+    border-radius: 0 0 5px 5px;
+    border: 1px solid rgb(255 255 255 / 30%);
+    border-top: 0;
+    display: grid;
+    grid-gap: 10px;
+    align-items: center;
+    padding: 10px 15px;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    width: 1000px;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    min-height: 67px;
+}
+.articlePostButton{
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    margin-bottom: 35px;
+}
+.articlePost{
+    display: flex;
+    grid-gap: 10px;
+    align-items: center;
+    font-size: 18px;
+    border: 1.5px solid #fff;
+    padding: 6px 12px;
+    border-radius: 19px;
+    cursor: pointer;
+    color: #fff;
+}
+.articlePost:hover {
+    background: #fff;
+    color: #1d1d1d;
+}
+.articleCreateCtn{
+    width: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+.p-inputtext{
+    background: unset !important;
+    border: unset !important;
+    font-size: 25px !important;
+    font-weight: bold !important;
+    width: 100% !important;
+    padding: 0 !important;
+}
+.p-inputtext ::placeholder{
+    font: 30px;
+    color: #fff;
+}
+.articleThumbNails,
+.articleThumbNailsError{
+    color: #fff;
+    position: relative;
+    min-height: 160px;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 10px;
+    z-index: 11;
+    transition: ease-in-out 0.2s;
+    cursor: pointer;
+    margin-bottom: 20px;
+    border: 2px dashed rgb(255 255 255);
+    background: rgba(0, 0, 0, 0.5);
+    font-size: 25px;
+    font-weight: bold;
+    display: grid;
+    text-align: center;
+    align-items: center;
+}
+.articleThumbNailsError{
+    border: 2px dashed #f44336;
+}
+.articleTitle,
+.articleSubTitle{
+    font-size: 16px;
+    color: #fff;
+    font-weight: bold;
+    line-height: 1.5;
+    margin-bottom: 5px;
+}
+.articleSubTitle{
+    font-size: 14px;
+    color: #ccc;
+}
+.articleGridMiddle{
+    height: 100%;
+    position: relative;
+}
+quill-editor{
+    height: 250px;
+    width: 100%;
+    margin-bottom: 25px;
+}
+.articleGridCtn{
+    display: table;
+    padding: 25px 0; 
+    height: 100%;
+    min-height: 100%;
+    width: 1000px;
+    margin: 0 auto;
+}
+.articleCreateGrid{
+    display: grid;
+    grid-template-columns: 600px 340px;
+    grid-gap: 60px;
+    margin: auto;
+    height: 100%;
+}
+.articleThumbNailsCtn{
+    display: block;
+    grid-gap: 25px;
+    overflow: hidden;
+}
+.articleThumbNailsCtn i{
+    font-size: 40px;
+    color: rgb(255 255 255 / 80%);
+}
+.publisherPicCtn{
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.3);
+    border: 2px solid rgb(255 255 255 / 30%);
+}
+
+.publishedArticleContainer{
+    position: relative;
+    width: 100%;
+}
+quill-editor.ng-untouched.ng-pristine.ng-valid{
+    width: 100% !important;
+
+}
+p img{
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 600px !important;
+    max-height: 600px !important;
+    border-radius: 5px !important;
+    display: grid !important;
+}
+.article_textArea,
+.article_textAreaError{
+    display: grid;
+    grid-gap: 15px;
+    line-height: 1.5 !important;
+    border-radius: 0 !important;
+    overflow: hidden;
+}
+.editorError,
+.article_textAreaError{
+    border: 1px solid #f44336 !important;
+    background: rgb(244 67 54 / 30%);
+    padding: 10px;
+    border-radius: 5px;
+}
+.article_textAreaError{
+    border: 0 !important;
+    border-bottom: 1px solid #f44336 !important;
+}
+.textAreaCtn{
+    display: grid;
+    grid-gap: 15px;
+    margin-bottom: 30px;
+}
+.sub_title{
+    font-size: 20px !important;
+    color: #ccc !important;
+}
+
+.dataInputs{
+    width: 100%;
+    display: grid;
+}
+.dataInputCtn .dataInputs{
+    padding-bottom: 25px;
+}
+
+.uploaderSelectOptionsGrid,
+.uploaderSelectOptionsGridError{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding: 20px;
+    background: #000;
+    border-radius: 5px;
+    height: auto;
+    border: 1px solid rgb(255 255 255 / 30%);
+}
+.uploaderSelectOptionsGridError{
+    border: 1px solid #f44336 !important;
+}
+.uploaderSelectFile{
+    width: auto;
+    overflow: hidden;
+    display: flex;
+    grid-gap: 15px;
+}
+.uploaderSelectFile label,
+.OptionTitle{
+    display: flex;
+    place-items: center;
+    font-size: 18px;
+    cursor: pointer;
+    grid-gap: 5px;
+    color: rgb(225, 225, 225, 0.8);
+}
+.uploaderSelectFile label:hover{
+    color: #fff;
+}
+.inputLimitCount{
+    display: grid;
+    color: #ccc;
+    font-size: 15px;
+    place-items: center;
+}
+.imageContainerPrev{
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    grid-gap: 20px;
+    place-items: center;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+}
+.imageContainerPrev:hover{
+    background: rgb(0 0 0 / 60%);
+}
+.dragIcon{
+    font-size: 26px;
+    color: #ccc;
+    display: grid;
+}
+.uplodSelectedGrid {
+    display: flex;
+    grid-gap: 20px;
+}
+.uploaderPhotographContainer{
+    flex: none;
+}
+.photographInfosCtn{
+    display: grid;
+    align-items: center;
+}
+.photographInfos {
+    display: grid;
+    align-items: center;
+    grid-gap: 5px;
+}
+.photographName {
+    font-size: 14px;
+    word-break: break-word;
+}
+.deleteMedia {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    height: 35px;
+    width: 35px;
+    font-size: 15px;
+    color: rgb(225, 225, 225, 0.8);
+    background: rgb(0 0 0 / 50%);
+    border: 1.5px solid #fff;
+    border-radius: 25px;
+    cursor: pointer;
+    z-index: 11;
+    display: grid;
+    place-items: center;
+}
+.deleteMedia:hover {
+    color: #1d1d1d;
+    background: #fff;
+}
+.dragPlaceHolder{
+    height: 150px;
+    width: 100%;
+    min-width: 10px;
+    border: 2px dashed #ccc;
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+    border-radius: 5px;
+    display: inline-block;
+    vertical-align: middle;
+}
+.cdkDropListCtn{
+    position: relative;
+}
+.cdkDropListCtn:last-child {
+    border: none;
+}
+.cdk-drag-animating {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+.cdkDropListCtn.cdk-drop-list-dragging .uploaderLeftArrayPrev:not(.cdk-drag-placeholder) {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+.cdkDragHolding{
+    color: #fff !important;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle;
+}
+.cdkDropListCtn.cdk-drop-list-dragging .cdkDragHolding:not(.cdk-drag-placeholder) {
+    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+.cdkDragCtnSlider{
+    position: relative;
+    width: 100%;
+}
+.cdkDragCtn{
+    position: relative;
+    width: 100%;
+    display: flex;
+    grid-gap: 15px;
+    white-space: nowrap;
+    transition: all ease-in-out .3s;
+}
+.cdkDragMainFlex{
+    width: 100%;
+    overflow: hidden;
+    display: grid;
+    position: absolute;
+}
+
+.cardArrow_1,
+.cardArrow_2{
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    top: 50%;
+    left: -55px;
+    transform: translateY(-50%);
+    color: rgb(255 255 255 / 80%);
+    border: 1px solid #ffffff4d;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+}
+.cardArrow_2{
+    left: unset;
+    right: -55px;
+}
+.cardArrow_1:hover,
+.cardArrow_2:hover{
+    color: #1d1d1d;
+    background: #fff;
+}
+.gridEdit {
+    display: flex;
+    grid-gap: 25px;
+}
+.gridEditOption,
+.gridEditOptionRed {
+    display: flex;
+    align-items: center;
+    grid-gap: 10px;
+    color: var(--primary-color);
+    cursor: pointer;
+    font-size: 16px;
+}
+.gridEditOptionRed{
+    color: #f05550;
+}

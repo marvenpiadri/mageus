@@ -1,0 +1,69 @@
+
+<div class="uploadbarCtn">
+  <div class="uploadFull" [style.width.%]="barPercentage">
+
+  </div>
+</div>
+
+<div class="uploaderCtn">
+
+  <!-- gossip dare answer -->
+  <div class="postTopGridDare">
+  
+    <div class="gossipLeftGridContainerPic">
+      <div class="u1_userPic">
+        <img src="{{IMG_URL+decodedToken?.pic+'?width=52'}}">
+      </div>
+      <div class="gossipTypeLine platinum"></div>
+    </div>
+  
+    <div class="gossipRightCtn">
+  
+      <div class="uploaderGrid">
+  
+        <div class="uploaderLeftArray" [style.width.px]="deckWidth" [style.height.px]="deckWidth" *ngIf="!filePreview">
+          <input type="file" name="upload" id="uploader" (change)="preview($event)" multiple>
+          <label for="uploader">
+            <div class="iconLabel">
+              <i class="fas fa-plus"></i>
+              <div class="iconLabelLim"> (PNG-GIF-JPEG) 
+                <div class="div"> Limit 8MB </div>
+              </div>
+            </div>
+          </label>
+        </div>
+  
+        <div class="uploaderLeftArrayPrev" [style.width.px]="deckWidth" [style.height.px]="deckWidth" *ngIf="filePreview">
+          <div class="imgCancelButton" (click)="removePic()"><i class="fas fa-trash"></i></div>
+          <img src="{{filePreview}}">
+        </div>
+
+        <textarea 
+        [(ngModel)]="magazineTitle" 
+        [maxLength]="200"
+        cdkTextareaAutosize
+        #autosize="cdkTextareaAutosize"
+        cdkAutosizeMinRows="2"
+        placeholder="Magazine Title"
+        pInputTextarea></textarea>
+  
+      </div>
+  
+    </div>
+  
+  </div>
+
+  <div class="postTopGridWrite">
+
+    <div class="gossipLeftGridContainerPic">
+      <div class="gossipCircleIconPlatinum"><i class="fa-solid fa-layer-group"></i></div>
+    </div>
+
+    <div class="gossipGridOptions">
+      <div class="gossipCharLimit">{{200-magazineTitle.length}}</div>
+      <div class="sendGossipButtonGossip" (click)="diarySend()">Create</div>
+    </div>
+
+  </div>
+
+</div>

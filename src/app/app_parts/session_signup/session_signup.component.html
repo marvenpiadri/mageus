@@ -1,0 +1,45 @@
+<div class="signing">
+  <div class="sign_top">
+    <div class="progLoading" *ngIf="progCreate">
+      <mat-progress-spinner mode="indeterminate" diameter="25" color="accent"></mat-progress-spinner>
+      Please Wait ...
+    </div>
+    <div class="create_logo">
+      <img src="/demistars.png" alt="Demistars Logo">
+    </div>
+    <div class="sign_title" *ngIf="!progCreate">Create New Account</div>
+    <div class="signToggler">Already have an account ? <span class="signTogTitle" (click)="signUpToggler()">Log in</span></div>
+  </div>
+
+  <div class="loginHandler">
+    
+    <form class="formGrid" [formGroup]="userForm">
+  
+      <p-iconField iconPosition="right">
+        <input pInputText id="fullname" formControlName="fullname" placeholder="Fullname" required/>
+      </p-iconField>
+
+      <p-iconField iconPosition="right">
+        <input pInputText id="username" formControlName="username" placeholder="Username" required/>
+        <p-inputicon *ngIf="isSearching" class="pi pi-spinner pi-spin"></p-inputicon>
+      </p-iconField>
+
+      <p-iconField iconPosition="right">
+        <input pInputText id="email" formControlName="email" placeholder="Email" required/>
+        <p-inputicon *ngIf="emailSearching" class="pi pi-spinner pi-spin"></p-inputicon>
+      </p-iconField>
+
+      <p-iconField iconPosition="right">
+        <p-password id="password" formControlName="password" placeholder="Password" required feedback="true" [toggleMask]="true" />
+      </p-iconField>
+      <!-- <mat-error *ngIf="userForm.controls['password'].hasError('zero_user')">{{warning}}</mat-error> -->
+      <!-- <mat-error *ngIf="userForm.controls['password'].hasError('pass_bad')">{{warning}}</mat-error> -->
+  
+      <div class="sign_up_button" (click)="createMyAccount()">Create account</div>
+
+    </form> 
+    
+  </div>
+
+</div>
+<p-toast position="bottom-left" key="bl" class="custom-toast" />

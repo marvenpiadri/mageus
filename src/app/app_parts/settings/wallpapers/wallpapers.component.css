@@ -1,0 +1,121 @@
+
+  .profile_settings_main_div{
+    position: relative;
+    display: table;
+    margin: auto;
+  }
+  .general_settings_page_ctn{
+    position: relative;
+    display: table;
+  }
+  .set_line_1_header{
+    margin-bottom: 25px
+  }
+  .general_setting_title{
+    position: relative;
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(255 255 255 / 0.8);
+  }
+  .general_setting_cover_ctn{
+    display: table;
+    margin: auto;
+    margin-bottom: 25px;
+  }
+  .general_setting_cover,
+  .general_setting_profile{
+    position: relative;
+    height: 300px;
+    width: 500px;
+    overflow: hidden;
+    display: flex;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(155, 106, 106, 0.3);    
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .general_setting_profile{
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+  }
+  .general_setting_cover img,
+  .general_setting_profile img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  .general_settings_pic_option{
+    position: relative;
+    display: grid;
+    grid-template-columns: 100px auto;
+    grid-gap: 10px;
+    float: right;
+  }
+  .general_settings_pic_change,
+  .general_settings_pic_delete{
+    position: relative;
+    height: 30px;
+    width: 100px;
+    display: grid;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+  }
+  .general_settings_pic_change label{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    font-size: 15px;
+    background: rgb(0 0 0 / 30%);
+    color: rgb(255 255 255 / 60%);
+    display: grid;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid rgb(255 255 255 / 30%);
+    font-weight: bold;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  .general_settings_pic_change label:hover{
+    background: #fff;
+    color: #1d1d1d;
+  }
+  .general_settings_pic_delete{
+    position: relative;
+    font-size: 15px;
+    background: rgb(0 0 0 / 30%);
+    color: rgb(255 255 255 / 60%);
+    height: 30px;
+    width: 30px;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  .general_settings_pic_delete .mat-icon{
+    height: 100%;
+    width: 100%;
+    display: grid;
+    place-items: center;
+  }
+  .general_settings_pic_delete:hover{
+    background: #fff;
+    color: #f44336;
+  }
+  .space_distance_empty{
+    width: 100%;
+    height: 7px;
+    background: #e9e9e9;
+  }
+
+  .general_setting_option_ctn{
+    display: table;
+    width: 100%;
+    margin-bottom: 20px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid rgb(0 0 0 / 20%);
+  }

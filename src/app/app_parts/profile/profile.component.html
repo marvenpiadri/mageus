@@ -1,0 +1,17 @@
+
+  
+<div class="{{subPath == '' || subPath == 'magazines' ? 'profileContainerScroll': 'profileContainerScroll2'}}" 
+(scrolled)="onScrollDown()"
+infiniteScroll
+[infiniteScrollDistance]="2"
+[infiniteScrollThrottle]="50"
+[scrollWindow]="false">
+
+<div class="profileContainer">
+  <div class="profileCtn">
+    <app-profile-bar [headerInfo]="headerInfo" [userID]="userID" [loading]="pageLoading"></app-profile-bar>
+  </div>
+    <router-outlet style="display: none;" />
+  </div>
+  
+</div>

@@ -1,0 +1,104 @@
+
+
+<div class="profileHeaderFlex">
+
+  <div class="profileNavigation">
+    <a routerLink="./" routerLinkActive="active">
+      <div class="{{subPath == '' ? 'ProfMavButOn' : 'ProfMavButOff' }}">
+        <i class="fas fa-camera"></i> Posts
+      </div>
+    </a>
+
+    <a routerLink="./articles" routerLinkActive="active">
+      <div class="{{subPath == 'articles' ? 'ProfMavButOn' : 'ProfMavButOff' }}">
+        <i class="fas fa-newspaper"></i> Articles
+      </div>
+    </a>
+
+    <a routerLink="./magazines" routerLinkActive="active">
+      <div class="{{subPath == 'magazines' ? 'ProfMavButOn' : 'ProfMavButOff' }}">
+        <i class="fas fa-layer-group"></i> Magazines
+      </div>
+    </a>
+
+  </div>
+
+  <div class="profileRightNavCtn">
+    <div class="profileRightNav">
+  
+
+      
+      <div class="porfileUserInfoCtn">
+        
+        <div class="profileUserButtonFlex">
+          <div class="profileUserPic" *ngIf="!loading">
+            <img [src]="headerInfo?.pic ? (IMG_URL + headerInfo.pic + '?width=50') : (IMG_URL + 'default_pfp.jpg' + '?width=50')">
+          </div>
+          <div class="profileName" *ngIf="!loading"> 
+            {{headerInfo?.name}}  
+          </div> 
+        </div>
+        <section class="sectionGrid">
+          <div class="profileStatus"  *ngIf="username != userID && headerInfo">
+            <!-- *ngIf="username != userID && headerInfo" -->
+
+            <div class="profileBut">
+              <div class="profileAddUser" 
+              (click)="follow()" 
+              *ngIf="headerInfo?.ifollow < 1" 
+              pTooltip="Follow+" tooltipPosition="left">Follow</div>
+        
+              <div class="profileAddedUser" 
+              (click)="deleteFollow()" *ngIf="headerInfo?.ifollow > 0"
+              pTooltip="Unfollow-" tooltipPosition="left">Unfollow</div>
+            </div>
+            
+            <div class="statusDetails" *ngIf="loading">
+              <p-skeleton width="120px" height="35px" borderRadius="20px" ></p-skeleton>
+            </div>
+              
+          </div>
+  
+          <div 
+          cdkOverlayOrigin 
+          #trigger2="cdkOverlayOrigin"
+          class="{{editBol ? 'postEditOn' : 'postEdit'}}"
+          (click)="editPost($event)" >
+            <i class="fas fa-cog"></i>
+          </div>
+          <ng-template 
+          *ngIf="!loading"
+          class="{{editBol ? 'editContainer':'editContainerHide'}}"
+          cdkConnectedOverlay
+          [cdkConnectedOverlayPositions]="positions"
+          [cdkConnectedOverlayOrigin]="trigger2"
+          [cdkConnectedOverlayOpen]="editBol"
+          [cdkConnectedOverlayHasBackdrop]="true"
+          (backdropClick)="editBol = false">
+            <div class="optionsContainer">
+              <div class="listRed" ng-template-item>
+                <i class="fas fa-flag"></i> Report 
+              </div>
+              <div class="listRed" ng-template-item>
+                <i class="fas fa-ban"></i> Block 
+              </div>
+            </div>
+          </ng-template>
+   
+        </section>
+  
+  
+        <section class="sectionGrid" *ngIf="loading">
+          <div class="userInfo">
+            <p-skeleton width="100%" height="20px"></p-skeleton>
+            <p-skeleton width="100%" height="20px"></p-skeleton>
+          </div>
+        </section>
+  
+      </div>
+    
+    </div>
+  
+  
+  </div>
+</div>

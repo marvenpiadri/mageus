@@ -1,0 +1,6 @@
+<div class="gimi_cover_user">
+  <div class="profile_cover">
+    <img [src]="wallpaper ? (IMG_URL + wallpaper + '?width=' + windowWidth + '&format=webp&quality=100') : (IMG_URL + 'default.jpg' + '?width=' + windowWidth + '&format=webp&quality=100')">
+  </div>
+  <router-outlet style="display: none;"></router-outlet>
+</div>

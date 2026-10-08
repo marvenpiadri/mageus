@@ -1,0 +1,32 @@
+<div class="album-table">
+  <table>
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Cover</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Score</th>
+        <th>Views</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let article of articles; let i = index"     
+      [routerLink]="['./'+article.slug+'/'+article.articleID]">
+        <td>{{ i + 1 }}</td>
+        <td                 
+        [style.width.px]="articleWidth" 
+        [style.height.px]="articleHeight">
+          <img src="{{IMG_URL+article?.cover+'?width='+articleWidth}}">
+        </td>
+        <td class="title">{{ article.title }}</td>
+        <td class="author">{{ article.author.username }}</td>
+        <td>{{ getAVG(article.stars, article.votes) }}</td>
+        <td>{{ article.views }}</td>
+        <td>{{ article.createdAt | date: 'shortDate' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<router-outlet style="display: none;"></router-outlet>

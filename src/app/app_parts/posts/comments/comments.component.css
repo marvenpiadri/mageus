@@ -1,0 +1,339 @@
+.commentsCtn{
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 5px;
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+.commentTitle{
+    display: flex;
+    grid-gap: 15px;
+    align-items: center;
+}
+.commentHeader{
+    padding: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    border-bottom: 1.5px solid rgb(255 255 255 / 80%);
+}
+.commentCount{
+    color: var(--primary-color);
+}
+.commentRelativeCtn{
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+.deckQuestionsData{
+    position: absolute;
+    margin: auto;
+    overflow: hidden;
+    overflow-y: scroll;
+    padding: 0 25px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+.deckPost_Q_A:not(:last-of-type) .commentsCtnTop{
+    padding-bottom: 30px;
+}
+.deckPost_Q_A:last-of-type .commentsCtnTop{
+    padding-bottom: 0;
+}
+.deckPost_Q_A{
+    position: relative;
+}
+.deckPost_Q_A:last-of-type .profileCommentLine{
+    display: none;
+}
+.answerUsersCtn{
+    position: relative;
+}
+.answerUsersCtn:last-of-type .profileAnswerLine{
+    display: none;
+}
+.commentReplyText,
+.commentText,
+.dsa-ctn{
+    position: relative;
+    color: rgb(255 255 255 / 100%);
+    white-space: normal;
+}
+
+.showMoreButton{
+    font-size: 15px;
+    font-weight: bold;
+    color: var(--blue-400);
+    margin-bottom: 15px;
+    cursor: pointer;
+    display: table;
+    transition: all ease-in-out .3s;
+}
+.showMoreButton:hover{
+    color: var(--blue-300);
+}
+
+::placeholder{
+    color: rgb(255 255 255 / 80%);
+}
+.deckQ_D_Opt{
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+}
+.Q_D_button{
+    position: relative;
+    display: flex;
+    grid-gap: 10px;
+    padding: 5px 15px 5px 10px;
+    border-radius: 5px;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    background: rgb(255 255 255 / 20%);
+}
+.Q_D_button:hover{
+    color: #1d1d1d;
+    background: rgb(255 255 255 / 100%);
+    font-weight: bold;
+}
+.dsq-header{
+    position: relative;
+    color: #fff;
+}
+.dsq-header:not(:last-of-type){
+    margin-bottom: 10px;
+}
+.commentMainCtn,
+.commentMainCtnTop{
+    display: grid;
+    grid-gap: 5px;
+}
+.commentMainCtn{
+    margin-bottom: 15px;
+}
+.commentsCtnSub {
+    padding-bottom: 20px;
+}
+.dsq-header-grid,
+.dsq-header-grid_2{
+    display: grid;
+    grid-gap: 25px;
+    grid-template-columns: 55px 1fr;
+}
+.dsq-header-grid_2{
+    grid-template-columns: 45px 1fr;
+}
+
+.commentsCtnTop,
+.commentsCtnSub{
+    line-height: 1.5;
+    flex-grow: 1;
+}
+
+.dsq-header-prof{
+    color: #fff;
+    font-weight: bold;
+    position: relative;
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+.dsq-header-pic,
+.dsq-header-pic_2{
+    position: relative;
+    height: 55px;
+    width: 55px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    border: 2px solid rgb(255 255 255 / 40%);
+    color: #fff;
+    transition: all ease-in-out 0.3s;
+}
+.dsq-header-pic_2{
+    height: 45px;
+    width: 45px;
+}
+.dsq-header-pic:hover,
+.dsq-header-pic_2:hover{
+    border: 2px solid rgb(255 255 255 / 90%);
+}
+
+.qsReplies{
+    display: flex;
+    grid-gap: 10px;
+    font-size: 13px;
+    color: #fff;
+}
+
+.qs5Stars{
+    float: left;
+    display: flex;
+    grid-gap: 5px;
+    direction: rtl;
+}
+
+.optBar{
+    display: flex;
+    grid-gap: 15px;
+    align-items: center;
+}
+.qsOption,
+.qsOptionOn{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    border: 1px solid rgb(255 255 255 / 20%);
+    background: rgb(0 0 0 / 20%);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+}
+.qsOption label{
+    height: 100%;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+}
+              
+.qsOptionOn{
+    background: #fff;
+    color: #1d1d1d;
+}
+.q_a_threadAvg{
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    align-items: baseline;
+    grid-gap: 5px;
+    color: var(--mdc-theme-primary);
+}
+.q_a_threadAvg .fas{
+    color: #fff;
+}
+.answerUserPic{
+    height: 22px;
+    width: 22px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.answerUserName,
+.answer{
+    font-size: 15px;
+    font-weight: bold;
+}
+.answerUserPic,
+.answerUserName{
+    margin-right: 10px;
+    float: left;
+}
+.answer{
+    font-weight: normal;
+    color: #fff;
+    white-space: normal;
+    float: unset;
+    line-height: 1.6;
+    display: block;
+}
+.postMiddleGrid{
+    position: relative;
+    color: #fff;
+    display: grid;
+    grid-gap: 25px;
+    padding: 25px 0;
+}
+.askButtons{
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    grid-gap: 20px;
+    color: rgba(255, 255, 255, 0.7);
+}
+.askInitiateButtonTxtArea{
+    position: relative;
+    height: auto;
+    width: auto;
+    top: unset;
+    right: unset;
+    bottom: unset;
+    padding: 6px 14px;
+    background-color: unset;
+    border: 1.5px solid #fff;
+    color: #fff;
+    border-radius: 25px;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    min-width: 100px;
+}
+.askInitiateButtonTxtArea:hover{
+    background-color: #fff;
+    color: #1d1d1d;
+}
+
+.deckReplies{
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    margin: auto;
+}
+.commentsHeader{
+    color: #fff;
+    align-items: center;
+    display: inline-block;
+    vertical-align: middle;
+}
+.commentTime{
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.commentsOptions{
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    grid-gap: 15px;
+    align-items: center;
+}
+.postSetting{
+    top: 0;
+    right: 50px;
+}
+.commentTextInp{
+    position: relative;
+    display: grid;
+    grid-gap: 15px;
+}
+.commentTextInp textarea{
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    padding: 0;
+    border: 0 !important;
+    border-radius: 0 !important;
+    border-bottom: 2px solid rgb(225 225 225 / 80%) !important;
+    line-height: 1.6;
+    font-size: 14px;
+    background: unset;
+}
+.commentTextInp textarea:focus{
+    border-bottom: 2px solid rgb(225 225 225 / 100%);
+}
+.profileCommentLine,
+.profileAnswerLine{
+    position: relative;
+    margin: auto;
+    background: #fff;
+    width: 1.5px;
+    cursor: pointer;
+    height: 100%;
+    transition: all ease-in-out 0.3s;
+}

@@ -1,0 +1,8 @@
+<p-fileUpload name="myfile[]" 
+[customUpload]="true" 
+accept="image/png, image/gif, image/jpeg"
+#fileuploader
+dragDropSupport="true"  
+(onProgress)="progressReport($event)"
+(uploadHandler)="myUploader($event)">
+</p-fileUpload>

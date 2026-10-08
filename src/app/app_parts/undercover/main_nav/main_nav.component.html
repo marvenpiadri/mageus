@@ -1,0 +1,136 @@
+<div class="mainNavBarGrid">
+
+  <a routerLink="{{username}}" routerLinkActive="active">
+    <div class="logoNavCtn">
+      <img src="demistars.png">
+    </div>
+  </a>
+
+  <div class="mainNavSys">
+    <div class="mainNavCtn">
+
+      <a routerLink="{{username}}" routerLinkActive="active">
+        <div class="{{pagePath == ':userID' ? 'navButOn' : 'navButOff' }}">
+          <div class="{{pagePath == ':userID' ? 'mainNavOptAc' : 'mainNavOpt'}}">
+            <i class="fas fa-home"></i> 
+          </div>
+        </div>
+      </a>
+
+      <a routerLink="/feeds" routerLinkActive="active">
+        <div class="{{pagePath == 'feeds' ? 'routeNavCtnOn' : 'navButOff' }}">
+          <div class="{{pagePath == 'feeds' ? 'mainNavOptAc' : 'mainNavOpt'}}">
+            <i class="fas fa-bolt"></i> 
+          </div>
+        </div>
+      </a>
+      
+      <div style="position: relative;">
+        <div class="bell_notification" *ngIf="notifsCount"></div>
+        <div (click)="showMenu_1()" class="{{notifBol ? 'navButOn' : 'navButOff'}}">
+          <div class="{{notifBol ? 'mainNavOptAc' : 'mainNavOpt'}}">
+            <i class="fas fa-bell"></i> 
+          </div>
+        </div>
+      </div>
+
+      <div (click)="showFind()" class="{{findBol ? 'navButOn' : 'navButOff'}}">
+        <div class="{{findBol ? 'mainNavOptAc' : 'mainNavOpt'}}">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+      </div>
+
+
+      <div
+      (click)="showEdit($event, creatBol)" 
+      cdkOverlayOrigin 
+      #trigger="cdkOverlayOrigin"
+      class="{{creatBol ? 'navButOn' : 'navButOff'}}">
+        <div class="{{creatBol ? 'mainNavOptAc' : 'mainNavOpt'}}">
+          <i class="fas fa-plus"></i> 
+        </div>
+      </div>
+
+      <ng-template 
+      cdkConnectedOverlay
+      [cdkConnectedOverlayOrigin]="trigger"
+      [cdkConnectedOverlayOpen]="creatBol"
+      [cdkConnectedOverlayPositions]="positions"
+      [cdkConnectedOverlayHasBackdrop]="true"
+      (backdropClick)="creatBol = false"
+      #tempref
+      (click)="$event.stopPropagation()">
+        <div class="optionsContainer">
+          <a routerLink="/write" routerLinkActive="active">
+            <div class="listWhite" ng-template-item>
+              <i class="fas fa-film"></i> Write article  
+            </div>
+          </a>
+          <div (click)="CreateMag()" class="listWhite" ng-template-item>
+            <i class="fa-solid fa-layer-group"></i> Create magazine  
+          </div>
+        </div>
+      </ng-template>
+  
+    </div>
+
+  </div>
+
+  <div 
+    class="{{isGlassMode ? 'toggle-btn active':'toggle-btn'}}" 
+    [class.active]="isGlassMode" 
+    (click)="onToggleChange()">
+    <i class="pi" [ngClass]="isGlassMode ? 'pi-circle-fill' : 'pi-moon'"></i>
+  </div>
+
+  <div class="profileUserPicCtn"
+  (click)="showMenu_3()" 
+  cdkOverlayOrigin 
+  #menu2="cdkOverlayOrigin">
+    <div class="{{navBol ? 'navGridOptionOn' : 'navGridOption'}}">
+      <i class="fas fa-bars"></i> 
+    </div>
+  </div>
+
+</div>
+
+<ng-template 
+cdkConnectedOverlay
+[cdkConnectedOverlayOrigin]="menu2"
+[cdkConnectedOverlayOpen]="navBol"
+[cdkConnectedOverlayPositions]="positions2"
+[cdkConnectedOverlayHasBackdrop]="true"
+(backdropClick)="navBol = false"
+#tempref
+(click)="$event.stopPropagation()">
+  <div class="optionsContainer">
+
+    <div class="apps_selectionCtn">
+
+      <a *ngFor="let app of apps; let ind = index" [routerLink]="app.ref" routerLinkActive="active">
+        <div class="listWhite" ng-template-item>
+          <i class="fas fa-{{app.icon}}"></i> {{app.msg}}
+        </div>
+      </a>
+
+      <div class="listRed" (click)="logOut()" ng-template-item>
+        <i class="fas fa-sign-out-alt"></i> Log out 
+      </div>
+
+    </div>
+
+  </div>
+</ng-template>
+
+<mat-sidenav-container hasBackdrop="true" (backdropClick)="close('backdrop')">
+  <mat-sidenav mode="over"  #sidenav fixedInViewport="true" (keydown.escape)="close('escape')" disableClose>
+      <app-notifs *ngIf="notifBol"></app-notifs>
+  </mat-sidenav>
+</mat-sidenav-container>
+
+
+<mat-sidenav-container hasBackdrop="true" (backdropClick)="close('backdrop')">
+  <mat-sidenav mode="over" #sidenav2 fixedInViewport="true" (keydown.escape)="close('escape')" disableClose>
+      <app-search *ngIf="findBol"></app-search>
+  </mat-sidenav>
+</mat-sidenav-container>

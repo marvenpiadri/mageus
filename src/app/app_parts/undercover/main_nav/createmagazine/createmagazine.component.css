@@ -1,0 +1,99 @@
+.uploaderCtn{
+    height: 100%;
+    width: 100%;
+}
+.uploaderGrid{
+    display: grid;
+    grid-gap: 15px;
+}
+.uploaderLeftArray,
+.uploaderLeftArrayPrev{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    display: inline-block;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    overflow: hidden;
+    vertical-align: top;
+}
+.uploaderLeftArrayPrev{
+    position: relative;
+    z-index: 1;
+    border: unset;
+}
+.uploaderLeftArray label{
+    background: rgb(0 0 0 / 40%);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: grid;
+    place-items: center;
+    font-size: 40px;
+    color: rgb(225, 225, 225, 0.7);
+    cursor: pointer;
+}
+.uploaderLeftArray label:hover{
+    background: rgba(0, 0, 0, 0.5);
+}
+.iconLabel,
+.iconLabelLim{
+    position: relative;
+    display: grid;
+    grid-gap: 15px;
+    text-align: center;
+}
+.iconLabelLim{
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.headerControlGrid{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.gossipLeftGridContainerPic{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+.gossipGridOptions{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+}
+.sendGossipButtonGossip{
+    padding: 6px 12px;
+    color: rgb(255 255 255 / 80%);
+    border: 1.5px solid #ffffff4d;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 35px;
+    cursor: pointer;
+}
+.sendGossipButtonGossip:hover{
+    color: #1d1d1d;
+    background: #fff;
+}
+textarea{
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    padding: 0;
+    border: 0 !important;
+    border-radius: 0 !important;
+    border-bottom: 2px solid rgb(225 225 225 / 80%) !important;
+    line-height: 1.6;
+    font-size: 14px;
+    background: unset;
+}
+textarea:focus{
+    border-bottom: 2px solid rgb(225 225 225 / 100%);
+}

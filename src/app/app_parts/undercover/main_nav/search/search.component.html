@@ -1,0 +1,65 @@
+
+<mat-sidenav-content (scrolled)="onScrollDown()"
+infiniteScroll
+[infiniteScrollDistance]="2"
+[infiniteScrollThrottle]="50"
+[scrollWindow]="false">
+
+<div class="notifsScroll">
+
+    <div class="navTitle"> Search </div>
+    
+    <div class='dareInputCtn'>
+      <form [formGroup]="coolForm">
+        <p-iconfield>
+          <p-inputicon class="pi pi-search" *ngIf="!isSearching" />
+          <p-inputicon class="pi pi-spin pi-spinner" *ngIf="isSearching" />
+          
+          <input pInputText type="text" formControlName="search" placeholder="Search" maxlength="400" (input)="searchForUsers()">
+        </p-iconfield>
+      </form>
+    </div>
+
+    <div class="recentFlex"> 
+      <div class="recentTitle">Recent searches</div>
+      <div class="recentBut"> Delete All</div>
+    </div>
+    
+    <div class="notifCardsCtn" *ngIf="searches.length > 0">
+      <div class="notifBox" *ngFor="let search of searches; let ind = index">
+        <a routerLink="{{search.username}}" routerLinkActive="active">
+          <div class="notifBoxCard">
+            <div class="notifBoxGrid">
+              <div class="boxUserPic"> 
+                <img src="{{IMG_URL+search?.pic+'?width=40'}}" *ngIf="">
+              </div>
+              <div class="boxUsermid">
+                <a routerLink="{{'/'+search.username}}" routerLinkActive="active"> 
+                  <span class="cardNotifUserName">{{search.name}}</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- <div class="notifCardsCtn" *ngIf="searches.length < 1">
+      <div class="notifBox" *ngFor="let notif of notifs; let ind = index">
+        <a routerLink="{{notif.username}}" routerLinkActive="active">
+          <div class="notifBoxCard">
+            <div class="notifBoxGrid">
+              <div class="boxUserPic"> <img src="{{IMG_URL+notif.pic}}"> </div>
+              <div class="boxUsermid">
+                <a routerLink="{{'/'+notif.username}}" routerLinkActive="active"> 
+                  <span class="cardNotifUserName">{{notif.name}}</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div> -->
+
+</div>
+</mat-sidenav-content>

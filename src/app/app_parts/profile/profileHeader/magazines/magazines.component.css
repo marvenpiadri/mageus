@@ -1,0 +1,183 @@
+.Magazines{
+    position: relative;
+    width: 800px;
+    height: auto;
+}
+
+.yearsSwitchCtn{
+    position: relative;
+    color: #fff;
+    text-align: center;
+}
+.diariesHeader{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.sectionTitle{
+    font-size: 18px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    grid-gap: 12px;
+}
+.yearSwitch{
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(0 0 0 / 50%);
+    cursor: pointer;
+    display: flex;
+    grid-gap: 10px;
+}
+.yearSwitch:hover{
+    color: #fff;
+}
+.cardsContainer{
+    position: relative;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    margin: auto;
+}
+.uname_answer{
+    font-size: 14px;
+    text-align: center;
+    color: #fff;
+}
+.postHighlight,
+.postHighlightAc{
+    position: relative;
+    display: inline-block;
+    margin-right: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    vertical-align: top;
+    cursor: pointer;
+    transition: all ease-in-out 0.1s;
+}
+.postHighlight:hover,
+.postHighlightAc{
+    border: 2px solid hsl(0deg 0% 100% / 50%); 
+}
+.Q-postCtnMid{
+    transform: translateX(0px);
+    display: inline-block;
+    grid-gap: 10px;
+    transition: all ease-in-out 0.2s;
+}
+.postCardCtn{
+    position: relative;
+    color: rgba(255, 255, 255, 0.5);
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    display: table;
+    grid-template-rows: auto 1fr auto;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.diaryYear{
+    position: relative;
+    font-weight: bold;
+    color: #fff;
+    font-size: 15px;
+    text-shadow: 0 0 6px rgb(0 0 0 / 50%);
+    text-align: center;
+}
+
+.Q-TopicSender_pic,
+.Q-TopicSender_picAc{
+    position: absolute;
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid rgb(255 255 255 / 30%);
+    margin: auto;
+    bottom: 20px;
+    left: 50%;
+    display: grid;
+    transform: translate(-50%, -0%);
+}
+.Q-TopicSender_picAc{
+    border: 2px solid var(--mdc-theme-primary);
+    box-shadow: 0 0 6px 1px var(--mdc-theme-primary);
+}
+.Q-TopicSender_picAc img{
+    border-radius: 50%;
+}
+
+.senderTitle_1,
+.senderTitle_2,
+.senderTitle_3,
+.senderTitle_5{
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 1.4;
+    color: #fff;
+    margin-bottom: 5px;
+    display: grid;
+    grid-gap: 10px;
+    margin: auto 0;
+}
+.dateOfDiary{
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    color: #FFF;
+    font-weight: bold;
+    font-size: 18px;
+    text-shadow: 0 0 8px #000000;
+    padding: 10px;
+    margin: auto;
+    line-height: 1.5;
+    background: linear-gradient(0deg, rgb(0 0 0 / 80%), transparent);
+    white-space: normal;
+}
+.timeDecksCtn{
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 15px;
+}
+.postHighlight{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.historyHeaderGlass{
+    width: 100%;
+    backdrop-filter: blur(20px);
+    height: 60px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+.cardArrow_1,
+.cardArrow_2{
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    top: 50%;
+    left: -55px;
+    transform: translateY(-50%);
+    color: rgb(255 255 255 / 80%);
+    border: 1px solid #ffffff4d;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+}
+.cardArrow_2{
+    left: unset;
+    right: -55px;
+}
+.cardArrow_1:hover,
+.cardArrow_2:hover{
+    color: #1d1d1d;
+    background: #fff;
+}

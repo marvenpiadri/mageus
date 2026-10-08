@@ -1,0 +1,244 @@
+
+.mainNavBarGrid{
+    position: relative;
+    display: grid;
+    color: rgba(255, 255, 255, 0.7);
+    z-index: 26;
+    grid-template-rows: 40px 1fr auto;
+    grid-gap: 20px;
+    padding: 15px 0;
+    align-items: center;
+    height: 100%;
+    place-items: center;
+    width: 70px;
+    border-right: 1.5px solid rgb(255 255 255 / 30%);
+}
+// .sideNavCont{
+//     position: fixed;
+//     height: 100%;
+//     background-color: #1d1d1d;
+//     width: 400px;
+//     z-index: 150;
+//     left: 72px;
+//     top: 0;
+//     left: 0;
+//     bottom: 0;
+// }
+.mainNavCtn{
+    display: grid;
+    margin: auto 0;
+    align-items: center;
+    text-align: center;
+    grid-gap: 10px;
+    width: 100%;
+}
+.mainNavCtn a{
+    color: inherit;
+    text-decoration: none;
+}
+.mainNavBarGrid a{
+    position: relative;
+}
+.logoNavCtn{
+    width: 40px;
+    overflow: hidden;
+    display: grid;
+    align-items: center;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.mainNavOpt,
+.mainNavOptAc,
+.mainNavOptOff,
+.mainNavOptOn{
+    position: relative;
+    display: grid;
+    place-items: center;
+    font-size: 17px;
+    grid-gap: 10px;    
+    color: inherit;
+    cursor: pointer;
+}
+.mainNavOpt i,
+.mainNavOptAc i,
+.mainNavOptOff i,
+.mainNavOptOn i{
+    text-align: center;
+    display: grid;
+}
+.profileUserPicCtn{
+    position: relative;
+    display: table;
+}
+
+.navBolbOff,
+.navBolbOn{
+    position: absolute;
+    top: 2px;
+    right: -5px;
+    height: 5px;
+    width: 5px;
+    background: #f44336;
+    border-radius: 50%;
+    transition: ease-in-out 0.2s;
+}
+.navBolbOn{
+    background: #f44336;
+    box-shadow: 0 0 6px 1px #f44336;
+}
+.bell_notification{
+    height: 4px;
+    width: 7px;
+    background: #f44336;
+    box-shadow: 0 0 6px 2px #f44336;
+    border-radius: 0 5px 5px 0;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: ease-in-out 0.2s;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.mainNavSys{
+    width: 100%;
+}
+.apps_notif_right_post{
+    position: relative;
+    height: 100%;
+    width: 50px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.apps_grid_screen_notification_cont{
+    position: relative;
+    padding: 10px;
+    background: #ffffff70;
+    border-bottom: 1px solid #fff;
+}
+.apps_notif_first_grid{
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-gap: 10px;
+    align-items: center;
+}
+
+.apps_notif_name{
+    color: #fff;
+    font-size: 14px;
+}
+
+.apps_notif_ctn{
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    grid-gap: 5px;
+    color: #fff;
+    font-size: 14px;
+}
+
+.appProfileContainer{
+    display: flex;
+    grid-gap: 10px;
+    align-items: center;
+    font-weight: bold;
+    padding: 10px;
+    padding-right: 20px;
+    cursor: pointer;
+    color: var(--primary-color);
+    background: #000b0f;
+}
+.appProfileContainer:hover{
+    background: var(--primary-color);
+    color: #1d1d1d;
+}
+.appPfp{
+    overflow: hidden;
+    height: 35px;
+    width: 35px;
+    border-radius: 20px;
+    border: 1.5px solid rgb(225, 225, 225, .5);
+}
+.appUname{
+    display: flex;
+    align-items: center;
+    grid-gap: 5px;
+}
+
+.pageSetOpt {
+    display: flex;
+    align-items: center;
+    grid-gap: 15px;
+    color: rgb(255 255 255 / 80%);
+}
+.pageSetOpt .fa-solid{
+    width: 22px;
+    text-align: center;
+}
+mat-sidenav-container{
+    height: 100%;
+}
+mat-sidenav{
+    position: fixed;
+    height: 100%;
+    min-width: 470px;
+    background: #000;
+    padding-left: 70px;
+}
+.mat-drawer-backdrop{
+    position: fixed;
+}
+::ng-deep .p-togglebutton.icon-only .p-button-label {
+    display: none !important;
+  }
+  
+  ::ng-deep .p-togglebutton.icon-only .p-button-icon {
+    margin: 0 auto;
+    font-size: 1.4rem;
+  }
+
+.toggle-btn{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgb(255 255 255 / 30%);
+    background: rgb(0 0 0 / 30%);
+    color: #ccc;
+  }
+  .toggle-btn.active {
+    background: #fff;
+    color: #1d1d1d;
+  }
+  
+  .undercover {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: all 0.5s ease;
+  }
+  
+  /* Dark mode */
+  .undercover.dark {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.85), rgba(0,0,0,0.6));
+  }
+  
+  /* Glass mode */
+  .undercover.glass {
+    backdrop-filter: blur(60px);
+    background: rgba(255, 255, 255, 0.1);
+  }
+  

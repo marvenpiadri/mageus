@@ -1,0 +1,114 @@
+<div class="profile_settings_info_change_middle_ctn">
+
+  <div class="profile_settings_input_ctn">
+    <div class="profile_settings_input_title"> Name </div>
+    <div class="profile_settings_input_input">
+      <input type="text" placeholder="{{infosData?.name}}" autocomplete="false" [(ngModel)]="fullname">
+      <div class="profileSettingsButtonCtn">
+        <div class="profile_settings_input_save" (click)="change_fullname()">Save</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="profile_settings_input_ctn">
+    <div class="profile_settings_input_title"> Username 
+      <div class="profile_settigns_warning" *ngIf="usernameError.ref == 1"> *{{usernameError.msg}} </div>
+      <div class="profile_settigns_warning_bl" *ngIf="usernameError.ref == 2"> {{usernameError.msg}} </div>
+    </div>
+
+    
+    <div class="profile_settings_input_input">
+      <input type="text" placeholder="{{infosData?.username}}" [(ngModel)]="username" (input)="checkUsername()">
+      <div class="profile_settings_input_save" (click)="changeUserName()">Save</div>
+    </div>
+  </div>
+
+  <div class="profile_settings_input_ctn">
+    <div class="profile_settings_input_title"> Email 
+      <div class="profile_settigns_warning" *ngIf="useremailError.ref == 1"> *{{useremailError.msg}} </div>
+      <div class="profile_settigns_warning_bl" *ngIf="useremailError.ref == 2"> {{useremailError.msg}} </div>
+    </div>
+
+    <div class="profile_settings_input_input">
+      <input type="text" placeholder="{{infosData?.email}}" [(ngModel)]="email" (input)="checkUserEmail()" />
+      <div class="profile_settings_input_save" (click)="sendEmail()"> Save </div>
+    </div>
+  </div>
+
+  <div class="profile_settings_input_ctn">
+    <div class="profile_settings_input_title"> Gander </div>
+    <div class="profile_settings_input_g">
+      <mat-radio-group [(ngModel)]="gander">
+        <mat-radio-button value="0" (click)="changeGander(0)">Phantom</mat-radio-button>
+        <mat-radio-button value="1" (click)="changeGander(1)">Male</mat-radio-button>
+        <mat-radio-button value="2" (click)="changeGander(2)">Female</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+
+  <div class="profile_settings_input_ctn">
+    <div class="profile_settings_input_title"> Birthday </div>
+    <div class="setting_date_input_ctn_grid">
+        <input matInput [matDatepicker]="picker" [value]="infosData?.birthday" (dateChange)="change_date($event)">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker startView="year"></mat-datepicker>
+    </div>
+  </div>
+
+  <div class="profile_settings_input_ctn" *ngIf="infosData?.password">
+
+    <div class="profile_setting_password">
+      <div class="profile_settings_input_title"> 
+        Old Password 
+        <div class="profile_settigns_warning" *ngIf="oldPasswordErr.ref == 1"> *{{oldPasswordErr.msg}} </div>
+        <div class="profile_settigns_warning_bl" *ngIf="oldPasswordErr.ref == 2"> {{oldPasswordErr.msg}} </div>
+      </div>
+      <div class="profile_settings_input_input">
+        <input type="password" placeholder="Old Passwrod" [(ngModel)]="odlPass" (input)="checkPassword()">
+      </div>
+    </div>
+
+    <div class="profile_setting_password">
+      <div class="profile_settings_input_title"> New Password </div>
+      <div class="profile_settings_input_input">
+        <input type="password" placeholder="New Password" [(ngModel)]="newpass"> 
+      </div>
+    </div>
+
+    <div class="profile_setting_password">
+      <div class="profile_settings_input_title"> Repeat-new Password </div>
+      <div class="profile_settings_input_input">
+          <input type="password" placeholder="Repeat Password" [(ngModel)]="repeatPass">
+      </div>
+    </div>
+    <div class="profSavePass">
+      <div class="profile_settings_input_save" (click)="changePassword(1)"> Save </div>
+    </div>
+  </div>
+
+  <div class="profile_settings_input_ctn" *ngIf="!infosData?.password">
+
+    <div class="profile_setting_password">
+      <div class="profile_settings_input_title"> 
+        Set a Password 
+        <div class="profile_settigns_warning" *ngIf="oldPasswordErr.ref == 1"> *{{oldPasswordErr.msg}} </div>
+        <div class="profile_settigns_warning_bl" *ngIf="oldPasswordErr.ref == 2"> {{oldPasswordErr.msg}} </div>
+      </div>
+      <div class="profile_settings_input_input">
+          <input type="{{showPass == true ? 'text': 'password'}}" 
+          [(ngModel)]="setPass"
+          placeholder="Set a Password" 
+          (input)="checkSetPassword()">
+        <div class="{{showPass == true ? 'passEyeIconOn' : 'passEyeIcon'}}" (click)="switchEye()">
+          <i class="fas {{showPass == true ? 'fa-eye-slash' : 'fa-eye'}}"></i>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="profSavePass">
+      <div class="profile_settings_input_save" (click)="changePassword(2)"> Save </div>
+    </div>
+  </div>
+ 
+</div>

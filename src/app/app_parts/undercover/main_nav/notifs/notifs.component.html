@@ -1,0 +1,46 @@
+
+<mat-sidenav-content (scrolled)="onScrollDown()"
+infiniteScroll
+[infiniteScrollDistance]="2"
+[infiniteScrollThrottle]="50"
+[scrollWindow]="false">
+
+<div class="notifsScroll">
+    <div class="navTitle">
+        Notifications
+    </div>
+    <!-- <app-followers></app-followers> -->
+    <div class="notifCardsCtn">
+        <div class="notifBox" *ngFor="let notif of notifs; let ind = index">
+            <a (click)="readnotifs(notif.id, notif.type_id, notif.extra.article_id)" routerLink="{{getUrlForNotifs(notif.id, notif?.extra?.article_id, notif.type_id, ind)}}" routerLinkActive="active">
+                <div class="notifBoxCard">
+                    <div class="notifBoxGrid">
+                        <div class="boxUserPost" [style.width.px]="width" [style.height.px]="height" *ngIf="notif?.extra?.media">
+                            <img src="{{IMG_URL+notif?.extra?.media+'?width='+width}}">
+                        </div>
+                        <div class="boxUserPic"> <img src="{{IMG_URL+notif.pic+'?width=45'}}"> </div>
+                        <div class="boxUsermid">
+
+                            <span class="leftBolbOn" *ngIf="!notif.seen"></span>
+
+                            <span class="cardType{{notif.type_id}}"><i class="{{iconType(notif.type_id)}}"></i></span>
+
+                            <a routerLink="{{'/'+notif.username}}" routerLinkActive="active"> 
+                                <span class="cardNotifUserName">{{notif.name}}</span>
+                            </a>
+
+                            <span class="cardNotifMsg">{{notif.message}}
+                                <span class="notif_stars" *ngIf="notif?.extra?.stars"> {{notif?.extra?.stars}}</span>
+                                <span class="notif_stars" *ngIf="notif?.extra?.text"> {{title(notif?.extra?.text)}}</span>
+                                <span class="notif_stars" *ngIf="notif?.extra?.comment"> {{title(notif?.extra?.comment)}}</span>
+                                <span class="notif_stars" *ngIf="notif?.extra?.reply"> {{title(notif?.extra?.reply)}}</span>
+                            </span>
+                        </div>
+                      
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+</mat-sidenav-content>

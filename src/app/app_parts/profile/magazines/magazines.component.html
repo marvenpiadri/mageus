@@ -1,0 +1,27 @@
+<div class="magazines-container">
+  <!-- Left Sidebar (Magazines List) -->
+  <div class="magazines-sidebar">
+    <h3 class="sidebar-title">Magazines</h3>
+    <div class="magazine-list" *ngIf="!magEmpty; else noMagazines">
+
+      <a [routerLink]="['./'+mag.mag_id]" 
+      *ngFor="let mag of magazines; let i = index">
+        <div 
+          
+          class="{{mag.mag_id == magID ? 'magazine-item-active' : 'magazine-item'}}" 
+        >
+          <img [src]="IMG_URL + mag.cover + '?width=50'" alt="cover" class="magazine-cover" />
+            <div class="magazine-title">{{ trimTitle(mag.title) }}</div>
+        </div>
+      </a>
+    </div>
+    <ng-template #noMagazines>
+      <div class="empty-text">No magazines yet.</div>
+    </ng-template>
+  </div>
+
+  <!-- Right Content (Articles of selected magazine) -->
+  <div class="magazines-content">
+    <router-outlet style="display: none;"></router-outlet>
+  </div>
+</div>

@@ -1,0 +1,387 @@
+app-ask{
+    margin-bottom: 60px;
+}
+.postCtnMarg{
+    position: relative;
+    display: table;
+    margin: auto;
+    scroll-snap-align: center;
+}
+.postCtnMarg:not(:last-of-type){
+    margin-bottom: 15px;
+}
+.postsContainer,
+.postsContainerComments {
+    position: relative;
+    width: 100%;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: auto 50px;
+    grid-gap: 15px;
+}
+.postsContainerComments{
+    grid-template-columns: auto auto 50px;
+}
+.postsContainer:not(:last-of-type),
+.postsContainerComments:not(:last-of-type){
+    margin-bottom: 15px;
+}
+
+.post_left_page_toggler_ctn_grid {
+    display: grid;
+    height: 100%;
+}
+.magProfilePicCtn{
+    position: relative;
+    display: block;
+    height: 50px;
+    width: 50px;
+}
+.postheader {
+    position: relative;
+    display: grid;
+    grid-gap: 5px;
+    align-items: center;
+}
+.dicerAndCaption {
+    display: grid;
+    grid-gap: 10px;
+}
+.post_right_page_toggler_ctn{
+ 
+    grid-gap: 10px;
+    position: relative;
+}
+
+.magazine_header_title{
+    font-size: 16px;
+    font-weight: bold;
+    width: 100%;
+    display: inline-block;
+    vertical-align: baseline;
+    line-height: 2;
+}
+.profile-cont {
+    position: relative;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.img-ctn {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    overflow: hidden;
+    -webkit-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    place-items: center;
+}
+.img-ctn img{
+    height: auto;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: grid;
+}
+
+.postContainerCtn{
+    width: 100%;
+    min-height: 100%;
+    padding: 30px 0;
+}
+.quizOwnerPhantom{
+    margin-right: 5px;
+}
+.quizOwnerPhantom i{
+    margin: auto;
+    display: grid;
+    width: 100%;
+    height: 100%;
+    place-items: center;
+}
+.answerCounts{
+    position: relative;
+    height: 100%;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+    color: rgb(68 215 182/ 1);
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+.answerCounts .fas{
+    color: #fff;
+    vertical-align: middle;
+    width: 22px;
+}
+
+.quizOwnerName a{
+    font-weight: bold;
+    font-size: 15px;
+    color: rgb(255 255 255 / 70%);
+    float: left;
+    cursor: pointer;
+    transition: ease-in-out .1s;
+}
+
+.quizOwnerName a:hover{
+    text-decoration: underline;
+    color: #fff;
+}
+.quizOwnerName{
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+    color: rgba(255, 255, 255, 0.7);
+}
+.user_info{
+    display: flex;
+    grid-gap: 10px;
+}
+.post_username{
+    font-weight: bold;
+    font-size: 17px;
+    display: grid;
+}
+
+.postCaption{
+    white-space: pre-wrap;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 15px;
+    color: rgb(255 255 255);
+    text-shadow: 0px 0px 5px black;
+    line-height: 1.5;
+    cursor: pointer;
+}
+.profilePicRing,
+.profilePicRingNotSeen,
+.profilePicRingSeen,
+.profilePicRingReading,
+.profilePicRingLoading{
+    position: relative;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid rgb(255 255 255 / 30%);
+    transition: all ease-in-out 0.3s;
+    cursor: pointer;
+}
+.profilePicRingNotSeen{
+    border: 2.5px solid rgb(68 215 182 / 100%);
+    box-shadow: 0 0 6px 1px rgb(68 215 182 / 100%);
+}
+.profilePicRingReading{
+    border: 2.5px solid #fff;
+    box-shadow: 0 0 6px 1px #fff;
+}
+.profilePicRingSeen{
+    border: 2.5px solid rgb(255 255 255 / 30%);
+}
+.profilePicRingSeen:hover{
+    border: 2.5px solid rgb(255 255 255 / 80%);
+}
+.profilePicRingLoading{
+    border: unset;
+}
+.postTrackCtn{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 1;
+}
+
+.demi_re-stars{
+    color: inherit;
+    display: inline;
+    vertical-align: top;
+    cursor: pointer;
+}
+
+.demi_re-stars .fas{
+    margin-right: 7px;
+    color: inherit;
+}
+
+.answerPostButt{
+    display: inline-block;
+    color: rgb(255 255 255 / 80%);
+    border-radius: 30px;
+    margin-right: 10px;
+    padding: 0 15px;
+    background: rgb(0 0 0 / 30%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    vertical-align: middle;
+}
+.answerPostButt a{
+    display: table;
+    width: 100%;
+    background: unset;
+}
+.quizOwnerName .material-icons{
+    color: rgb(255 255 255 / 90%);
+    font-size: 13px;
+    display: inline-block;
+    vertical-align: baseline;
+    cursor: pointer;
+}
+.quizOwnerName .material-icons:hover{
+    color: rgb(255 255 255 / 100%);
+}
+.demistar_is_star{
+    display: inline-block;
+    vertical-align: middle;
+}
+.demistar_is_star .material-icons{
+    color: rgb(255 255 255 / 90%);
+    height: auto;
+    width: auto;
+    font-size: 16px;
+    cursor: pointer;
+    display: block;
+}
+.demistar_is_star .material-icons:hover{
+    color: rgb(255 255 255 / 100%);
+}
+.answerPostButt:hover{
+    color: #1d1d1d;
+    background: #fff;
+}
+.answerPostButt a{
+    color: inherit;
+}
+.quizStreams{
+    display: flex;
+    align-items: center;
+    grid-gap: 5px;
+    color: inherit;
+}
+.quizStreams a{
+    color: inherit;
+}
+
+.post_tracker{
+    position: relative;
+    z-index: 1;
+    display: flex;
+    grid-gap: 5px;
+}
+.tracks{
+    height: auto;
+    width: auto;
+}
+.track_bolb_ac,
+.track_bolb{
+    height: 8px;
+    width: 14px;
+    border-radius: 10px;
+    background-color: #fff;
+    transition: all ease-in-out 0.2s;
+}
+.track_bolb_ac{
+    background: unset;
+    width: 8px;
+    background: rgb(255 255 255 / 40%);
+}
+.articleTitleAbs,
+.articleTitleAbsOff{
+    position: relative;
+}
+.articleTitleAbsOff{
+    background: unset;
+}
+.postDetailsBottom {
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    padding: 45px 12px 12px 12px;
+    background: linear-gradient(to top, rgb(0 0 0) 20%, rgba(255, 255, 255, 0) 75%);
+    display: grid;
+    grid-gap: 15px;
+    max-height: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.showMorePost{
+    font-weight: bold;
+    cursor: pointer;
+    display: inline-block;
+    color: #ccc;
+    transition: all ease-in-out .3s;
+}
+.showMorePost:hover{
+    color: #fff;
+}
+.postRightData{
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+    grid-gap: 15px;
+    padding: 10px 0;
+}
+.votesSkeleton{
+    height: 100%;
+    width: 100%;
+    display: grid;
+}
+.menuArticleCover{
+    display: grid;
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1.5px solid rgb(255 255 255 / 80%);
+}
+.menuArticleCover:hover{
+    border: 1.5px solid #fff;
+}
+.postOwnerDate {
+    font-size: 14px;
+    color: #fff;
+    font-weight: normal;
+}
+.postArticleInfo{
+    display: grid;
+    align-items: center;
+    color: #fff;
+    font-size: 14px;
+}
+.menuArticleTitle {
+    font-size: 14px;
+    font-weight: bold;
+}
+.showMoreInfoContainer {
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1.5px solid rgb(255 255 255 / 80%);
+    background: #000;
+}
+
+mat-sidenav{
+    position: fixed;
+    height: 100%;
+    min-width: 470px;
+    background: #000;
+}
+.vote-ctn {
+    display: grid;
+    margin: auto;
+    grid-gap: 8px;
+    width: 100%;
+    padding: 10px;
+    height: 100%;
+}
+
+.vote-ctn .skeleton{
+    display: grid;
+    margin: 0 auto;
+    width: auto;
+    padding: 5px;
+    height: 100%;
+}

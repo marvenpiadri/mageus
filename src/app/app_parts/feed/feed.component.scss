@@ -1,0 +1,24 @@
+.DS_subGlassBottom,
+.diary_glassScroll{
+    position: relative;
+    overflow: hidden;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    height: 100%;
+    width: 100%;
+    padding: 50px 0;
+}
+.diary_glassScroll{
+    overflow: hidden;
+    overflow-y: scroll;
+}
+.profilePost{
+    min-height: 100%;
+}
+.profileCtn{
+    position: relative;
+    height: auto;
+    display: table;
+    margin: 0 auto;
+    width: 680px;
+}

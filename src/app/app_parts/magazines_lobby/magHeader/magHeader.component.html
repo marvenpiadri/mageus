@@ -1,0 +1,109 @@
+<div class="profileRightNavCtn">
+  <div class="profileRightNav">
+
+    <div class="magazineCover" [style.height.px]="magWidth" [style.width.px]="magWidth" *ngIf="!loading">
+      <img src="{{IMG_URL+headerInfo?.cover+'?width='+magWidth}}">
+    </div>
+
+    <div class="magazineCoverSkeletonCtn" [style.height.px]="magWidth" [style.width.px]="magWidth" *ngIf="loading">
+      <p-skeleton class="magazineCoverSkeleton" width="100%" height="100%"></p-skeleton>
+    </div>
+
+    <div class="porfileUserInfoCtn">
+
+      <div class="porfileUserInfoGrid">
+        <div class="porfileUserInfo">
+
+          <div class="profileName" *ngIf="!loading"> 
+            {{headerInfo?.title}}  
+          </div>
+
+          <div style="width: 100%; display: grid; grid-gap: 5px" *ngIf="loading">
+            <p-skeleton width="100%" height="20px"></p-skeleton>
+            <p-skeleton width="100%" height="20px"></p-skeleton>
+          </div>
+          
+          <div class="postInfoFlex">
+
+            <div class="userOwnerFlex">
+              <div class="userOwnerPfp" *ngIf="!loading">
+                <img src="{{IMG_URL+headerInfo?.pic+'?width=50'}}">
+              </div>
+              <div class="userOwnerPfp" *ngIf="loading">
+                <p-skeleton shape="circle" width="100%" height="100%"></p-skeleton>
+              </div>
+              <a *ngIf="!loading" class="a_username" routerLink="{{'/'+headerInfo?.username}}" routerLinkActive="active">
+                <div class="userId" *ngIf="!loading">{{headerInfo?.username}} </div>
+              </a>
+              <div class="userId" *ngIf="loading">
+                <p-skeleton width="85px" height="20px" ></p-skeleton>
+              </div>
+            </div>
+
+            <span>&#8226;</span>
+
+            <div class="profileStatus">
+
+              <div class="statusDetails" *ngIf="loading">
+                <p-skeleton width="80px" height="20px"></p-skeleton>
+                <p-skeleton width="80px" height="20px"></p-skeleton>
+              </div>
+    
+              <div class="statusDetails" *ngIf="loading">
+                <p-skeleton width="80px" height="20px"></p-skeleton>
+                <p-skeleton width="80px" height="20px"></p-skeleton>
+              </div>
+    
+              <div class="statusDetails"  *ngIf="!loading">
+                {{numberPrefix(headerInfo?.pages)}} 
+                <div class="statusMessage"> Articles </div>
+              </div>
+                
+            </div>
+            
+            <div class="articleTime" *ngIf="loading">
+              <p-skeleton width="200px" height="20px"></p-skeleton>
+            </div>
+            
+            <div *ngIf="!loading">
+              <div 
+              cdkOverlayOrigin 
+              #trigger2="cdkOverlayOrigin"
+              class="{{ editBol ? 'postEditShortOn' : 'postEditShort'}}"
+              (click)="editPost($event)" >
+                <i class="fas fa-ellipsis-h"></i>
+              </div>
+              <ng-template 
+              class="{{editBol ? 'editContainer':'editContainerHide'}}"
+              cdkConnectedOverlay
+              [cdkConnectedOverlayPositions]="positions"
+              [cdkConnectedOverlayOrigin]="trigger2"
+              [cdkConnectedOverlayOpen]="editBol"
+              [cdkConnectedOverlayHasBackdrop]="true"
+              (backdropClick)="editBol = false">
+                <div class="optionsContainer">
+                  <div class="listRed" ng-template-item>
+                    <i class="fas fa-flag"></i> Report 
+                  </div>
+                  <div class="listRed" ng-template-item>
+                    <i class="fas fa-ban"></i> Block 
+                  </div>
+                </div>
+              </ng-template>
+            </div>
+            <div *ngIf="loading">
+              <p-skeleton width="50px" height="20px"></p-skeleton>
+            </div>
+          </div>
+
+          
+      
+        </div>
+      </div>
+
+    </div>
+  
+  </div>
+
+
+</div>

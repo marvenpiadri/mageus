@@ -1,0 +1,11 @@
+<div class="DS_subGlassBottom"
+infiniteScroll
+[infiniteScrollDistance]="2"
+[infiniteScrollThrottle]="50"
+[scrollWindow]="false"
+(scrolled)="onScrollDown()"
+#element>
+  <div class="profilePost">
+    <router-outlet style="display: none;"></router-outlet>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+.undercover,
+.undercoverGlass {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+  
+    transition: all ease-in-out 0.3s;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.85), rgba(0,0,0,0.6));
+  }
+  
+  /* Glass mode */
+  .undercoverGlass {
+    backdrop-filter: blur(60px);
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+.pageHolder,
+.pageHolderNoScroll{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+.pageHolderNoScroll{
+    overflow-y: hidden;
+}

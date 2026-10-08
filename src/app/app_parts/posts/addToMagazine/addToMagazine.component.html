@@ -1,0 +1,30 @@
+<div class="showAllMagazinesCtn"
+infiniteScroll
+[infiniteScrollDistance]="2"
+[infiniteScrollThrottle]="50"
+[scrollWindow]="false"
+(scrolled)="onScrollDown()"
+#element>
+  <div class="showAllMagazinesMain">
+    <div class="magazineToAddFlex" *ngFor="let mag of magazines; let i = index;">
+      <div class="magazinecover" [style.width.px]="deckWidth" [style.height.px]="deckWidth">
+        <img src="{{IMG_URL+mag.cover+'?width='+deckWidth}}"> 
+      </div>
+      <div class="magazineRightCtn">
+        <div class="magazineTitle"> {{trimTitle(mag.title)}} </div>
+        <div class="magazineOptions">
+          <div class="magazinePageCount"> 
+            <div class="magazinePageIcon">
+              <i class="fa-solid fa-layer-group"></i> 
+            </div>
+            {{mag.pages}} 
+          </div>
+          <div class="{{mag.added == 1 ? 'magazineAddButtonAc' : 'magazineAddButton'}}" 
+          (click)="addToMagazine(mag.mag_id, i)"> 
+            {{ mag.added == 1 ? 'Remove':'Publish' }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

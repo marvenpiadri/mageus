@@ -1,0 +1,78 @@
+.magazines-container {
+    display: flex;
+    height: calc(100vh - 60px); /* Adjust if you have a navbar */
+    font-family: 'Inter', sans-serif;
+  }
+  
+  /* Sidebar */
+  .magazines-sidebar {
+    width: 300px;
+    background: rgb(0 0 0 / 50%);
+    border-right: 1px solid rgb(255 255 255 / 30%);
+    overflow-y: auto;
+  }
+  
+  .sidebar-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #bbb;
+    padding: 0 1rem;
+  }
+  
+  .magazine-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  
+  .magazine-item, 
+  .magazine-item-active {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.6rem;
+    cursor: pointer;
+    color: #fff;
+    transition: background 0.2s ease;
+  }
+  
+  .magazine-item:hover,
+  .magazine-item-active {
+    background: #ffffff;
+    color: #1d1d1d;
+  }
+  
+  .magazine-cover {
+    width: 48px;
+    height: 48px;
+    border-radius: 6px;
+    object-fit: cover;
+  }
+  
+  .magazine-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .magazine-title {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: inherit;
+  }
+
+  
+  .empty-text {
+    text-align: center;
+    color: #777;
+    font-size: 0.9rem;
+    margin-top: 2rem;
+  }
+  
+  /* Right Content */
+  .magazines-content {
+    flex: 1;
+    width: 100%;
+  }
+  

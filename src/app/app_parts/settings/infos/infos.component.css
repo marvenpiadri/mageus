@@ -1,0 +1,156 @@
+.profile_settings_info_change_middle_ctn{
+    position: relative;
+    padding: 10px 0;
+    padding-top: 0;
+    border-top: 0;
+    display: grid;
+    margin: auto;
+    width: 500px;
+}
+.profile_settings_input_ctn{
+    display: table;
+    width: 100%;
+}
+.profile_settings_input_ctn:not(:last-of-type){
+    margin-bottom: 20px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid rgb(0 0 0 / 20%);
+}
+.profile_settings_input_title{
+    position: relative;
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(255 255 255 / 0.8);
+    margin-bottom: 15px;
+    display: flex;
+}
+.profile_settings_info_before_change{
+    position: relative;
+    padding: 10px 0;
+}
+.profile_settings_input_input{
+    display: flex;
+    align-items: center;
+    grid-gap: 15px;
+}
+
+.profile_settings_input_input input[type="text"], 
+.profile_settings_input_input input[type="date"], 
+.profile_settings_input_input input[type="password"],
+.profile_settings_input_input select{
+    position: relative;
+    width: 100%;
+    background: rgb(0 0 0 / 0.3);
+    border-radius: 5px;
+    padding: 0 12px;
+    outline: none;
+    height: 40px;
+    border: none;
+    font-size: 15px;
+}
+
+.profile_settings_input_input select{
+    width: 50%;
+    border: none;
+    border-radius: 5px;
+
+    box-shadow: inset 0 0 6px 1px rgb(0 0 0 / 0.3);
+
+    outline: none;
+}
+.profile_settings_input_save{
+    border-radius: 5px;
+    background: rgb(0 0 0 / 30%);
+    font-weight: bold;
+    color: rgb(255 255 255 / 80%);
+    padding: 0 32px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    height: 40px;
+    align-items: center;
+}
+.profile_settings_input_save .mat-icon{
+    height: 100%;
+    width: 100%;
+    display: grid;
+    align-items: center;
+    text-align: center;
+}
+.profile_settings_input_save:hover{
+    background: #fff;
+    color: #1d1d1d;
+}
+.setting_date_input_ctn_grid{
+    display: flex;
+    grid-gap: 10px;
+}
+.setting_date_input_ctn_grid input{
+    background: rgb(0 0 0 / 0.3);
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+.profile_settigns_warning,
+.profile_settigns_warning_bl{
+    position: relative;
+    text-align: right;
+    color: rgb(255 85 73 / 60%);
+    font-weight: bold;
+    margin-left: 15px;
+}
+.profile_settigns_warning_bl{
+    color: rgb(0 255 168 / 60%);
+}
+
+.profile_settings_input_g{
+    display: flex;
+    grid-gap: 30px;
+}
+.password_save{
+    position: relative;
+    margin-top: 30px;
+    padding: 10px;
+    border-radius: 5px;
+    background: #1aa3ff80;
+    width: 50%;
+    text-align: center;
+    cursor: pointer;
+}
+.password_save:hover{
+    background: #1aa3ff99;
+}
+/* TODO(mdc-migration): The following rule targets internal classes of radio that may no longer apply for the MDC version. */
+mat-radio-group{
+    display: flex;
+    grid-gap: 30px;
+    color: rgb(255 255 255 / 80%);
+    font-weight: bold;
+    font-size: 15px;
+}
+.profile_setting_password{
+    margin-bottom: 20px;
+}
+.profSavePass{
+    display: table;
+}
+
+.passEyeIcon,
+.passEyeIconOn{
+    position: relative;
+    height: 30px;
+    width: 30px;
+    background: rgb(0 0 0 / 0.3);
+    color: rgb(255 255 255 / 0.6); 
+    cursor: pointer;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+}
+.passEyeIconOn,
+.passEyeIcon:hover{
+    color: #1d1d1d;
+    background: #fff;
+}

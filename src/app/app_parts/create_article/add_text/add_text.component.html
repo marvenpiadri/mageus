@@ -1,0 +1,56 @@
+<div class="captionInput">
+
+  <div id="toolbar" className="toolbar ql-toolbar ql-snow">
+    <!--[{ 'header': [1, 2, 3, 4, 5, 6, false] }]-->
+    <select class="ql-header">
+      <option value="2"> Heading 1 </option>
+      <option value="3"> Heading 2 </option> 
+      <option value="" selected> Normal </option>
+    </select>
+
+    <!--['bold', 'italic', 'underline', 'strike']-->
+    <span class="ql-formats">
+      <button class="ql-bold"></button>
+      <button class="ql-italic"></button>
+      <button class="ql-underline"></button>
+      <button class="ql-strike"></button>
+    </span>
+
+    <!--['blockquote', 'code-block']-->
+    <span class="ql-formats">
+      <button class="ql-blockquote"></button>
+      <button class="ql-code-block"></button>
+      <button class="ql-link"></button>
+    </span>
+
+    <!--[{ 'list': 'ordered'}, { 'list': 'bullet' }, { 'indent': '-1'}, { 'indent': '+1' }, { 'direction': 'rtl' }, { 'align': [] }]-->
+    <span class="ql-formats">
+      <button class="ql-list" value="ordered"></button>
+      <button class="ql-list" value="bullet"></button>
+      <button class="ql-indent" value="-1"></button>
+      <button class="ql-indent" value="+1"></button>
+    </span>
+
+    <span class="ql-formats">
+      <button class="ql-align" value=""></button>
+      <button class="ql-align" value="center"></button>
+      <button class="ql-align" value="right"></button>
+      <button class="ql-align" value="justify"></button>
+    </span>
+    <!--['image', 'video', 'formula', 'link']-->
+  </div>
+  
+  <quill-editor 
+  class="{{artError ? 'editorError' : 'editor'}}"
+  [(ngModel)]="article"
+  [readOnly]="false" 
+  placeholder="Write article here"
+  [modules]="{'toolbar': '#toolbar'}"
+  (onEditorCreated)="getEditorInstance($event)"></quill-editor>
+  <input type="file" style="display: none" id="fileInputField"/>
+
+</div>
+
+<div style="margin-top: 25px;">
+  <button pButton pRipple icon="fa-solid fa-check" class="p-button" (click)="add()">Save Text</button>
+</div>

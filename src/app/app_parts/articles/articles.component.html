@@ -1,0 +1,68 @@
+
+  
+<div class="magArticleCtn">
+
+  <div class="magArticle" #deckHolder *ngIf="articles?.length > 0">
+    
+    <div class="menuLoop"  [style.width.px]="articleWidth"  *ngFor="let art of articles">
+
+        <div class="menuArticles">
+          
+          <div class="menuArticlesGrid">
+            <div class="menuImageCnt">
+              <a routerLink="{{'./'+art.slug+'/'+art.article_id}}" routerLinkActive="active">
+                <div 
+                [style.width.px]="articleWidth" 
+                [style.height.px]="articleHeight" 
+                class="{{ art.article_id == article_id ? 'menuArticleCoverOn':'menuArticleCover'}}"> 
+                  <img src="{{IMG_URL+art.cover_image+'?width='+articleWidth}}"> 
+                </div>
+              </a>
+            </div>
+
+            <div class="menuArticleInfos">
+              <a class="a_username" routerLink="{{'../../'+art?.username}}" routerLinkActive="active">
+                <div class="{{ art.iviews > 0 ? 'menuArticlePfp' : 'menuArticlePfpOn'}}">
+                  <img src="{{IMG_URL+art.pic+'?width=35'}}"> 
+                </div>
+              </a>
+              <div class="menuArtMenuCtn">
+                <div class="menuArtTitle">
+                  <a class="a_title" routerLink="{{'./'+art.slug+'/'+art.article_id}}" routerLinkActive="active">
+                    {{title(art.title, 1)}}
+                  </a>
+                  <span>
+                    <div class="timingAndViews"> {{art.created_at | date:'M/d/YY, h:mm a'}} &#x2022; {{art.views+' views'}}</div>
+                    <span>
+                      <a class="a_username" routerLink="{{'../../'+art?.username}}" routerLinkActive="active">{{art.username}}</a>
+                      <span class="demistar_is_star" *ngIf="art.u1_status == '3'" pTooltip="Demistar is verified" tooltipPosition="top">
+                        <span class="material-icons"> verified </span>
+                      </span>
+                    </span>
+                  </span>
+                </div>
+              </div>
+              <!-- <div class="menuArtStatusCtn">
+                <div *ngIf="art.views > 0">
+                  <div class="menuArtStatus"><i class="fas fa-eye"></i>{{art.views}}</div>
+                </div>
+              </div> -->
+
+            </div>
+
+          </div>
+
+        </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<div class="level_down">
+  <div class="levelArticleContainer">
+    <router-outlet style="display: none;"></router-outlet>
+  </div>
+</div>
+

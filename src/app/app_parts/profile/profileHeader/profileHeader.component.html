@@ -1,0 +1,135 @@
+<div class="profileRightNavCtn">
+  <div class="profileRightNav">
+
+    <div class="profileUserPic" *ngIf="!loading">
+      <img src="{{IMG_URL+headerInfo?.pic+'?width=150'}}">
+    </div>
+
+    <div class="profileUserPicSkeleton" *ngIf="loading">
+      <p-skeleton shape="circle" class="profilePicHaloLoading" width="100%" height="100%"></p-skeleton>
+    </div>
+
+    <div class="porfileUserInfoCtn">
+
+      <div class="porfileUserInfoGrid">
+        <div class="porfileUserInfo">
+          <div class="profileName" *ngIf="!loading"> {{headerInfo?.name}}  
+            <div 
+            cdkOverlayOrigin 
+            #trigger2="cdkOverlayOrigin"
+            class="{{editBol ? 'postEditOn' : 'postEdit'}}"
+            (click)="editPost($event)" >
+              <i class="fas fa-cog"></i>
+            </div>
+            <ng-template 
+            *ngIf="!loading"
+            class="{{editBol ? 'editContainer':'editContainerHide'}}"
+            cdkConnectedOverlay
+            [cdkConnectedOverlayPositions]="positions"
+            [cdkConnectedOverlayOrigin]="trigger2"
+            [cdkConnectedOverlayOpen]="editBol"
+            [cdkConnectedOverlayHasBackdrop]="true"
+            (backdropClick)="editBol = false">
+              <div class="optionsContainer">
+                <div class="listRed" ng-template-item>
+                  <i class="fas fa-flag"></i> Report 
+                </div>
+                <div class="listRed" ng-template-item>
+                  <i class="fas fa-ban"></i> Block 
+                </div>
+              </div>
+            </ng-template>
+          </div>
+          <div class="userId" *ngIf="!loading">{{headerInfo?.username}} </div>
+
+          <div class="profileName" *ngIf="loading">
+            <p-skeleton width="250px" height="20px"></p-skeleton>
+            <p-skeleton width="35px" height="35px"></p-skeleton>
+          </div>
+
+          <div class="userId" *ngIf="loading">
+            <p-skeleton width="180px" height="20px"></p-skeleton>
+          </div>
+
+        </div>
+      </div>
+  
+      <section class="sectionGrid">
+        <div class="profileStatus">
+
+          <div class="statusDetails" *ngIf="loading">
+            <p-skeleton width="80px" height="20px"></p-skeleton>
+            <p-skeleton width="80px" height="20px"></p-skeleton>
+          </div>
+
+          <div class="statusDetails" *ngIf="loading">
+            <p-skeleton width="80px" height="20px"></p-skeleton>
+            <p-skeleton width="80px" height="20px"></p-skeleton>
+          </div>
+
+          <div class="statusDetails"  *ngIf="!loading">
+            {{numberPrefix(headerInfo?.followers)}} 
+            <div class="statusMessage"> Followers </div>
+          </div>
+
+          <div class="statusDetails"  *ngIf="!loading">
+            {{numberPrefix(headerInfo?.following)}} 
+            <div class="statusMessage"> Following </div>
+          </div>
+        
+        
+          <div style="flex-grow: 1"></div>
+          <!-- *ngIf="username != userID && headerInfo" -->
+
+          <div class="profileBut" *ngIf="!loading && username != userID && headerInfo">
+            <div class="profileAddUser" 
+            (click)="follow()" 
+            *ngIf="headerInfo?.ifollow < 1" 
+            pTooltip="Follow+" tooltipPosition="left">Follow</div>
+      
+            <div class="profileAddedUser" 
+            (click)="deleteFollow()" *ngIf="headerInfo?.ifollow > 0"
+            pTooltip="Unfollow-" tooltipPosition="left">Unfollow</div>
+          </div>
+          
+          <div class="statusDetails" *ngIf="loading">
+            <p-skeleton width="120px" height="35px" borderRadius="20px" ></p-skeleton>
+          </div>
+            
+        </div>
+      </section>
+
+      <section class="sectionGrid" *ngIf="!loading">
+        <div class="userInfo" *ngIf="headerInfo?.bio">
+          <span class="profileBio" [innerHTML]="highlight(headerInfo?.bio)"></span>
+        </div>
+      </section>
+
+      <section class="sectionGrid" *ngIf="loading">
+        <div class="userInfo">
+          <p-skeleton width="100%" height="20px"></p-skeleton>
+          <p-skeleton width="100%" height="20px"></p-skeleton>
+        </div>
+      </section>
+      <!-- <div class="gossipRightCtn" *ngIf="headerInfo">
+        
+        <div class="postMiddleGrid">
+          <div class='dareInputCtn'>
+            <input type="text" placeholder="Where? What? How?" maxlength="400" [(ngModel)]="gossip">
+            <div class="dareInitiateButton" (click)="sendDare()"><i class="fas fa-paper-plane"></i></div>
+          </div>
+          <div class="askButtons">
+            <mat-slide-toggle (change)="phantomMode($event)" [checked]="phantasm">Phantom</mat-slide-toggle>
+            <div> </div>
+            <div class="quizUpLim">{{400-gossip.length}}</div>
+          </div>
+        </div>
+
+      </div> -->
+
+    </div>
+  
+  </div>
+
+
+</div>

@@ -1,0 +1,116 @@
+<!-- <app-edit_article *ngIf="editBol"></app-edit_article> -->
+
+<div class="articleContainerScroll">
+  <div class="articleLevels">
+    <div class="articleInfos">
+      <div class="publishedArticleContainer" #articleContainer>
+
+        <ng-container *ngIf="!articles; else articleLoaded">
+          <div class="articleThumbNails"
+            [style.height.px]="deckHeight_9"
+            [style.width.px]="deckWidth_16">
+            <p-skeleton width="100%" height="100%" animation="wave"></p-skeleton>
+          </div>
+
+          <div class="articleOptions">
+            <div class="optBar">
+              <p-skeleton width="50px" height="16px" animation="wave"></p-skeleton>
+              <p-skeleton width="50px" height="16px" animation="wave"></p-skeleton>
+              <p-skeleton width="50px" height="16px" animation="wave"></p-skeleton>
+            </div>
+            <div class="articleTime">
+              <p-skeleton width="100px" height="14px" animation="wave"></p-skeleton>
+            </div>
+          </div>
+
+          <div class="publisherHeader">
+            <div class="articleTitle">
+              <p-skeleton width="80%" height="20px" animation="wave"></p-skeleton>
+            </div>
+            <div class="articleSubTitle">
+              <p-skeleton width="100%" height="16px" animation="wave"></p-skeleton>
+            </div>
+            <div class="articleSubTitle">
+              <p-skeleton width="40%" height="16px" animation="wave"></p-skeleton>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-template #articleLoaded>
+          <div class="articleThumbNails"
+            [style.height.px]="deckHeight_9"
+            [style.width.px]="deckWidth_16">
+            <p-image
+              [src]="IMG_URL + articles?.cover_image+'?width='+deckWidth_16"
+              previewImageSrc="{{ IMG_URL + articles?.cover_image }}"
+              [preview]="true"></p-image>
+          </div>
+
+          <div class="articleOptions">
+            <div class="optBar">
+              <div class="q_a_threadAvg"><i class="fas fa-eye"></i> {{ articles?.views }}</div>
+              <div class="q_a_threadAvg"><i class="fas fa-star"></i> {{ articles?.stars }}</div>
+              <div class="q_a_threadAvg"><i class="fas fa-award"></i> {{ getAVG(articles?.stars, articles?.voters) }}</div>
+            </div>
+            <div class="articleTime">
+              {{ articles?.timepost | date: 'MMM d, y, h:mm a' }}
+            </div>
+          </div>
+
+          <div class="publisherHeader">
+            <div class="articleTitle">{{ articles?.title }}</div>
+            <div class="articleSubTitle">{{ articles?.subtitle }}</div>
+          </div>
+        </ng-template>
+      </div>
+
+      <div class="publishedArticleContainer">
+        <ng-container *ngIf="!articles?.parts; else partsLoaded">
+          <div class="part-skeleton" *ngFor="let i of [1,2,3]">
+            <p-skeleton width="90%" height="18px" animation="wave"></p-skeleton>
+            <p-skeleton width="95%" height="18px" animation="wave"></p-skeleton>
+            <p-skeleton width="85%" height="18px" animation="wave"></p-skeleton>
+          </div>
+        </ng-container>
+
+        <ng-template #partsLoaded>
+          <div class="articlePartCtn" *ngFor="let art of articles.parts; let ind = index">
+            <div class="publisherColumn" *ngIf="art.embed || art.html || art.image || art.slides">
+              <ng-container [ngSwitch]="art.type">
+                <div class="articlePart" *ngSwitchCase="'embed'">
+                  <app-article-embed class="articlePartContentEmbed"
+                    [embed]="art.embed"
+                    [height]="deckHeight_9"
+                    [width]="deckWidth_16"></app-article-embed>
+                </div>
+                <div class="articlePart" *ngSwitchCase="'image'">
+                  <app-article-image class="articlePartContentEmbed"
+                    [src]="IMG_URL + art.image+'?width=800'"></app-article-image>
+                </div>
+                <div class="articlePart" *ngSwitchCase="'text'">
+                  <app-article-text class="articlePartContentEmbed"
+                    [html]="art.html"></app-article-text>
+                </div>
+                <div class="articlePart" *ngSwitchCase="'slide'">
+                  <app-article-slides class="articlePartContentEmbed"
+                    [slides]="art.slides"
+                    [height]="carousel_height"
+                    [width]="carousel_width"></app-article-slides>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Optional: article not found message -->
+<!--
+<div class="postsDoesntExists" *ngIf="articles === null">
+  <div class="postsZeromsg">
+    <i class="fas fa-meh-rolling-eyes"></i> Couldn't find any articles
+  </div>
+</div>
+-->

@@ -1,0 +1,42 @@
+
+
+.profileContainer{
+    min-height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+.profilePostCtn{
+    min-height: 100%;
+    margin: auto;
+    display: table;
+}
+.profileCtn{
+    position: relative;
+    width: 100%;
+    scroll-snap-align: center;
+}
+.profileContainerScroll,
+.profileContainerScroll2{
+    position: relative;
+    overflow: hidden;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    height: 100%;
+    width: 100%;
+}
+.profileContainerScroll2{
+    scroll-snap-type: unset;
+}
+.profileContainerScroll::-webkit-scrollbar{
+    display: none;
+}
+
+app-profile-bar{
+    position: relative;
+}
+app-diaries,
+app-magazines{
+    display: table;
+    margin: auto auto 25px auto;
+}

@@ -1,0 +1,319 @@
+.profileHeaderFlex{
+    display: grid;
+    grid-template-columns: 2fr auto;
+    border-bottom: 1px solid rgb(255 255 255 / 30%);
+    padding: 10px;
+}
+.profileRightNavCtn{
+    position: relative;
+}
+.ProfMavButOn,
+.ProfMavButOff{
+    display: flex;
+    min-width: 120px;
+    grid-gap: 6px;
+    border-radius: 20px;
+    padding: 10px;
+    padding-right: 20px;
+    background: rgb(0 0 0 / 40%);
+    border: 1px solid rgb(255 255 255 / 40%);
+    color: #ccc;
+}
+.ProfMavButOff:hover,
+.ProfMavButOn{
+    background: #fff;
+    color: #1d1d1d;
+}
+.ProfMavButOn i,
+.ProfMavButOff i{
+    width: 25px;
+    text-align: center;
+}
+.profileNavigation{
+    display: flex;
+    grid-gap: 10px;
+}
+.profileRightNav{
+    position: relative;
+    height: auto;
+    display: grid;
+}
+.profileUserButtonFlex{
+    height: 35px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    grid-gap: 6px;
+    padding: 5px;
+    padding-right: 15px;
+    border-radius: 10px;
+    border: 1px solid rgb(255 255 255 / 40%);
+    background: rgb(0 0 0 / 30%);
+    color: #ccc;
+}
+.profileUserButtonFlex:hover{
+    color: #1d1d1d;
+    background: #fff;
+}
+.profileUserPic,
+.profileUserPicSkeleton{
+    position: relative;
+    height: 22px;
+    width: 22px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgb(0 0 0 / 30%);
+    overflow: hidden;
+}
+.profileUserPicSkeleton{
+    border: unset;
+}
+.porfileUserInfoGrid{
+    flex-grow: 1;
+}
+
+.statusMessage {
+    font-weight: normal;
+    font-size: 14px;
+    color: #ccc;
+}
+.profileUserDataCtn{
+    position: relative;
+    display: table;
+    padding: 100px;
+    padding-bottom: 50px;
+    border-bottom: 5px solid rgba(0, 0, 0, 0.5);
+    padding-top: 0;
+}
+.profile_track{
+    position: relative;
+    display: flex;
+    grid-gap: 20px;
+    white-space: normal;
+    word-break: break-word;
+}
+.trackUserCount{
+    position: relative;
+    display: flex;
+    color: rgba(255, 255, 255, 1);
+    align-items: baseline;
+    grid-gap: 5px;
+    font-weight: bold;
+    font-size: 19px;
+}
+.trackUserTitle{
+    display: grid;
+    font-weight: bold;
+    color: rgb(68 215 182/ 1);
+}
+.porfileUserInfoCtn{
+    display: flex;
+    grid-gap: 15px;
+    color: #fff;
+    align-items: center;
+}
+.porfileUserInfo{
+    position: relative;
+    display: grid;
+}
+.sectionGrid{
+    display: flex;
+    grid-gap: 20px;
+    grid-gap: 15px;
+}
+
+.profileName{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 15px;
+    font-weight: bold;
+    color: inherit;
+}
+.profileID_d,
+.profileID_l{
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.5);
+    display: inline;
+    font-weight: bold;
+}
+.profileID_l{
+    color: rgba(225, 225, 225, 0.3);
+}
+.profileAddUser,
+.profileAddedUser{
+    position: relative;
+    width: 120px;
+    height: 35px;
+    font-size: 15px;
+    text-align: center;
+    cursor: pointer;
+    background: var(--primary-color);
+    place-items: center;
+    flex-grow: 1;
+    color: rgb(255 255 255 / 80%);
+    font-weight: bold;
+    display: grid;
+    border-radius: 10px;
+}
+.profileAddUser:hover,
+.profileAddedUser{
+   background: #fff;
+   color: #1d1d1d;
+}
+.profileBut{
+    position: relative;
+    display: flex;
+    grid-gap: 16px;
+    align-items: center;
+    width: auto;
+}
+
+.profileIntroData{
+    position: relative;
+    color: rgb(255 255 255 / 90%);
+    display: grid;
+    grid-gap: 10px;
+}
+.profileIntro_d,
+.profileIntro_l{
+    position: relative;
+    display: inline-block;
+}
+.profileIntro_d .fas,
+.profileIntro_l .fas{
+    width: 20px;
+    margin-right: 10px;
+    text-align: center;
+    font-weight: 800;
+    font-size: 18px;
+    color: rgba(0, 0, 0, 0.5);
+}
+.profileIntro_l .fas{
+    color: rgba(225, 225, 225, 0.3);
+}
+.profileIntroTitle_d,
+.profileIntroTitle_l{
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.5);
+    display: inline-block;
+    font-weight: bold;
+}
+.profileIntroTitle_l{
+    color: rgba(225, 225, 225, 0.3);
+}
+.profileIntroWebsite{
+    position: relative;
+    font-size: 15px;
+}
+.profileButCtn{
+    display: table;
+    margin-bottom: 20px;
+}
+.trackUserCount .fas,
+.trackUserCount .material-icons{
+    font-size: 18px;
+}
+.profileBio{
+    font-size: 15px;
+    color: #fff;
+    line-height: 1.7;
+    white-space: pre-line;
+    width: 100%;
+}
+.profileBio .fas{
+    color: rgb(255 255 255 / 70%);
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+.userId{
+    font-size: 15px;
+    color: #ccc;
+}
+.userInfo{
+    position: relative;
+    display: grid;
+    grid-gap: 5px;
+}
+.userInfo p-skeleton{
+    float: left;
+}
+.showMorePost{
+    font-size: 16px;
+    font-weight: normal;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: bold;    
+    cursor: pointer;
+    display: flex;
+    grid-gap: 5px;
+    align-items: center;
+    transition: all ease-in-out .3s;
+    margin-top: 5px;
+}
+.showMorePost:hover{
+    color: #fff;
+}
+.profileStatus{
+    grid-gap: 20px;
+    display: flex;
+    align-items: center;
+}
+.statusDetails {
+    font-weight: bold;
+    color: #fff;
+    font-size: 17px;display: grid;
+    grid-gap: 5px;
+}
+.statusDetails .fas{
+    font-size: 15px;
+    color: #ccc;
+}
+
+.profileOptions,
+.profileOptionsOn{
+    display: grid;
+    place-items: center;
+    grid-gap: 15px;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
+    border: 1px solid rgb(255 255 255 / 30%);
+    background: rgb(0 0 0 / 30%);
+    color: rgb(255 255 255 / 80%);
+    cursor: pointer;
+    transition: all ease-in-out .3s;
+    flex: none;
+    height: 35px;
+    width: 35px;
+    border-radius: 5px;
+}
+.profileOptions:hover,
+.profileOptionsOn{
+    background: #fff;
+    color: #1d1d1d;
+}
+.editContainer,
+.editContainerHide{
+    position: fixed;
+    background: black;
+    width: 200px;
+    min-height: 10px;
+    padding: 8px;
+    display: block;
+    border-radius: 5px;
+    z-index: 11;
+}
+.editContainerHide{
+    display: none;
+}
+
+.navDivider{
+    display: grid;
+    grid-template-columns: auto auto auto 1fr;
+}
+.postEdit,
+.postEditOn{
+    margin: unset;
+}

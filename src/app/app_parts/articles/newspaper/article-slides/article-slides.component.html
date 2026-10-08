@@ -1,0 +1,34 @@
+
+
+
+
+
+<div class="deck-container" [style.height.px]="height+15">
+  <div
+    class="deck-card"
+    *ngFor="let slide of slides; let i = index"
+    [style.height.px]="height"
+    [style.width.px]="width"
+    [class.active]="i === currentIndex"
+    [style.transform]="getCardTransform(i)"
+    [style.zIndex]="getZIndex(i)"
+    (click)="goToSlide(i)"
+  >
+    <img [src]="IMG_URL+slide.pic+'?width='+height" alt="Article image" />
+    <!-- Overlay with link and label -->
+      <a
+      class="overlay"
+      [href]="slide.link"
+      target="_blank"
+      *ngIf="i === currentIndex && slide.link"
+      >
+      <div class="overlay-content">
+        <mat-icon class="material-symbols-outlined">open_in_new</mat-icon>
+        <p>{{ slide.label }}</p>
+      </div>
+    </a>
+  </div>
+
+  <button class="nav prev" (click)="prevSlide()">‹</button>
+  <button class="nav next" (click)="nextSlide()">›</button>
+</div>

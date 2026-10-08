@@ -1,0 +1,215 @@
+
+<mat-sidenav-container hasBackdrop="true" (backdropClick)="close('backdrop')">
+  <mat-sidenav mode="over" position="end" #sidenav2 fixedInViewport="true" (keydown.escape)="close('escape')" disableClose>
+    <app-addToMagazine *ngIf="showAddToMag" [articleID]="articleID"></app-addToMagazine>
+  </mat-sidenav>
+</mat-sidenav-container>
+
+<div class="postContainerCtn" #deckHolder *ngIf="!loading" >
+
+  <div class="postCtnMarg" [style.height.px]="deckHeight" *ngFor="let post of posts; let i = index;">
+
+    <div class="{{(post.showComment || post.showNewsPaper) ? 'postsContainerComments' : 'postsContainer'}}">
+
+      <div class="showMoreInfoContainer" [style.height.px]="deckHeight" [style.width.px]="700" *ngIf="post.showComment">
+        <app-comments [data]="post"></app-comments>
+      </div>
+
+      <div class="showMoreInfoContainer" [style.height.px]="deckHeight" [style.width.px]="700" *ngIf="post.showNewsPaper && post.article_id">
+        <app-article [data]="post"></app-article>
+      </div>
+
+      <div class='profile-cont' [style.height.px]="deckHeight" [style.width.px]="deckWidth">
+
+        <div class="postTrackCtn" *ngIf="post.photographs.length > 1">
+          <div class="post_tracker">
+            <div class="tracks" *ngFor="let pt of post.photographs">
+              <div class="{{pt?.media == post?.media ? 'track_bolb' : 'track_bolb_ac'}}"></div>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="post?.media" class='img-ctn' (click)="postSwitch($event, i)">
+          <img src="{{IMG_URL+post?.media+'?width='+deckHeight}}">
+        </div>
+
+        <div class="postDetailsBottom">
+
+          <div class="postheader">
+
+            <div class='user_info'>
+              <div class="menuArticleCover" *ngIf="post.article_id > 0" [style.height.px]="articleHeight" [style.width.px]="articleWidth">
+                <img src="{{IMG_URL+post?.article?.image+'?width='+articleWidth}}"> 
+      
+              </div>
+              <div class="post_username">
+                <a routerLink="{{'/'+post.u1_username}}" routerLinkActive="active">{{post.u1_username}}</a>
+                <span class="demistar_is_star" *ngIf="post.u1_status == '3'" pTooltip="Demistar is verified" tooltipPosition="top">
+                  <span class="material-icons"> verified </span>
+                </span>
+                <div class="postOwnerDate" *ngIf="post.timepost"> {{ post.timepost | date:'MMM d, y, h:mm a'}} </div>
+              </div>
+            </div>
+
+            <div class="postArticleInfo" *ngIf="post.article_id > 0">
+              <div class="menuArticleTitle">{{trimTitle(post?.article?.title)}}</div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="postRightData">
+
+        <div 
+        #editButtons 
+        (click)="showEdit($event, i, post.editBol)" 
+        cdkOverlayOrigin #trigger="cdkOverlayOrigin"
+        class="{{post.editBol ? 'postEditShortOn' : 'postEditShort'}}">
+          <i class="fas fa-ellipsis-h"></i>
+        </div>
+
+        <ng-template 
+        cdkConnectedOverlay
+        [cdkConnectedOverlayOrigin]="trigger"
+        [cdkConnectedOverlayOpen]="post.editBol"
+        [cdkConnectedOverlayPositions]="positions"
+        [cdkConnectedOverlayHasBackdrop]="true"
+        (backdropClick)="post.editBol = false"
+        #tempref
+        (click)="$event.stopPropagation()">
+          <div class="optionsContainer">
+            <div class="listWhite" *ngIf="post.u1_username == userOwner.username" (click)="addToMagazine(i)" ng-template-item>
+              <i class="fa-solid fa-layer-group"></i> Add to magazine  
+            </div>
+            <a routerLink="{{'/edit/'+post.article_id}}" routerLinkActive="active">
+              <div class="listWhite" *ngIf="post.u1_username == userOwner.username && post?.article_id" (click)="edit_post(i)" ng-template-item>
+                <i class="fas fa-pen"></i> Edit 
+              </div>
+            </a>
+            <div class="listRed" ng-template-item>
+              <i class="fas fa-ban"></i> Block 
+            </div>
+            <div class="listRed" *ngIf="post.u1_username == userOwner.username" (click)="delete_post(i)" mat-menu-item>
+              <i class="fas fa-trash"></i> Delete 
+            </div>
+          </div>
+        </ng-template>
+      
+        <div class="{{gtProfileRing(post?.article_id, post?.seen, post?.showNewsPaper)}}" (click)="showNewsPaper(i)"> 
+          <img src="{{IMG_URL+post.u1_pic+'?width=50'}}"> 
+        </div>
+
+        <div class="postVotingSys">
+          <div [ngClass]="getData(post.istars)" > 
+            <div class="emojiMeter" [innerHTML]="getEmoji(post.istars)"></div>
+          </div>
+          <div class="starsAvg">{{post.istars ? post.istars : 0}}</div>
+          <div class="vote-ctn">
+            <p-slider 
+            [animate]="true"
+            [step]="1" 
+            [min]="0" 
+            [max]="100" 
+            [(ngModel)]="post.istars" 
+            orientation="vertical" 
+            class="block appearance-none"
+            (mouseup)="getSliderValue($event, i)"
+            (onSlideEnd)="getSliderValue($event, i)"></p-slider>
+          </div>
+        </div>
+
+        <div class='likes-status'>
+
+          <div class="post_total">
+            <div class='votes_score'>
+              <i class="fas fa-award"  
+              pTooltip="Score"
+              tooltipPosition="left"></i>           
+              <span class='scoreCount'>{{ getAVG(post.stars, post.voters) }}</span>
+            </div>
+          </div>
+    
+          <div class="post_total">
+            <div class='votes_score'>
+              <i class="fas fa-star" 
+              pTooltip="Stars"
+              tooltipPosition="left"></i> 
+              <span class='scoreCount'>{{ numberPrefix(post.stars) }}</span>
+            </div>
+          </div>
+  
+          <div class="post_total">
+            <div class="{{ post.showComment ? 'votes_scoreAct' : 'votes_score' }}">
+              <i class="fas fa-comments" 
+              pTooltip="Comments"
+              tooltipPosition="left"
+              (click)="showComments(i)"></i>            
+              <span class='scoreCount' >{{ numberPrefix(post.comments) }}</span>
+            </div>
+          </div>
+          
+        </div>
+        
+      </div>
+  
+    </div>
+  </div>
+  
+  
+</div>
+
+<div class="postContainerCtn" *ngIf="loading">
+  <div class="postCtnMarg" [style.height.px]="deckHeight">
+    <div class="postsContainer">
+      <div class='profile-cont' [style.height.px]="deckHeight" [style.width.px]="deckWidth">
+        <p-skeleton width="100%" height="100%"></p-skeleton>
+  
+      </div>
+  
+      <div class="postRightData">
+        <div class='votesSkeleton'>
+          <p-skeleton width="70%" borderRadius="16px" height="15px"></p-skeleton>
+        </div>
+        <p-skeleton shape="circle" class="profilePicRingLoading" width="100%" height="100%"></p-skeleton>
+  
+        <div class="postVotingSys">
+          <div class='votes_score'>
+            <p-skeleton shape="circle" class="skeleton" width="100%" height="100%"></p-skeleton>
+          </div>
+          <div class='votesSkeleton'>
+            <p-skeleton width="80%" height="10px"></p-skeleton>
+          </div>
+          <div class="vote-ctn">
+            <p-skeleton class="skeleton" width="10px" height="100%"></p-skeleton>
+          </div>
+  
+        </div>
+  
+        <div class='likes-status'>
+          <div class='votes_score'>
+            <p-skeleton shape="circle" class="skeleton" width="100%" height="100%"></p-skeleton>
+            <p-skeleton width="80%" height="10px"></p-skeleton>
+          </div>
+          <div class='votes_score'>
+            <p-skeleton shape="circle" class="skeleton" width="100%" height="100%"></p-skeleton>
+            <p-skeleton width="80%" height="10px"></p-skeleton>
+          </div>
+          <div class='votes_score'>
+            <p-skeleton shape="circle" class="skeleton" width="100%" height="100%"></p-skeleton>
+            <p-skeleton width="80%" height="10px"></p-skeleton>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <div class="postsDoesntExists" *ngIf="posts?.length < 1">
+  <div class="postsZeromsg">
+    <i class="fas fa-meh-rolling-eyes"></i> Couldn't find any posts
+  </div>
+</div> -->
+

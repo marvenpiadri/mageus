@@ -1,0 +1,255 @@
+.articleContainerScroll{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 25;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background: #000;
+}
+.articleContainerAlpha{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+.articleLevels{
+    margin: auto;
+    min-height: 100vh;
+    width: auto;
+    width: 600px;
+    padding: 45px 0 45px 0 ;
+    margin: auto;
+}
+.publishedArticleContainer {
+    display: grid;
+    width: 600px;
+    padding-bottom: 25px;
+}
+.articleContainerGrid{
+    position: relative;
+    width: 100%;
+}
+.articleInfos{
+    position: relative;
+    width: 100%;
+}
+.articleOptions{
+    grid-template-columns: 1fr auto auto;
+    display: grid;
+    align-items: center;
+    grid-gap: 10px;
+    margin-bottom: 25px;
+}
+.articleBody{
+    display: grid;
+    line-height: 1.6;
+    white-space: pre-line;
+    grid-gap: 5px;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+.articleHost{
+    padding: 60px 0;
+    display: table;
+    margin: auto;
+}
+.optBar{
+    display: flex;
+    grid-gap: 15px;
+    align-items: center;
+}
+.articleTitle,
+.articleSubTitle{
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 1.6;
+}
+.articleTitle {
+    position: relative;
+    display: block;
+}
+.articleTitle a{
+    float: left;
+    margin-right: 10px;
+}
+.articleSubTitle{
+    font-size: 20px;
+    color: rgb(255 255 255 / 80%);
+    font-weight: normal;
+}
+.articlePlus{
+    display: flex;
+    grid-gap: 10px;
+    margin-bottom: 10px;
+    color: #fff;
+    font-size: 15px;
+    align-items: center;
+}
+.articlePlus .fas{
+    width: 20px;
+    color: rgb(255 255 255 / 80%);
+    text-align: center;
+}
+.articleReviewStar,
+.articleReviewStarOn{
+    display: grid;
+}
+
+.postEdit,
+.postEditOn{
+    height: auto;
+}
+.articleOptions{
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    grid-gap: 15px;
+    align-items: center;
+}
+.showMorePost{
+    font-size: 16px;
+    font-weight: normal;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: bold;    
+    cursor: pointer;
+    display: flex;
+    grid-gap: 5px;
+    align-items: center;
+    transition: all ease-in-out .3s;
+}
+.showMorePost:hover{
+    color: #fff;
+}
+.postCaption{
+    font-size: 22px;
+    color: rgb(255 255 255 / 80%);
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+.postSetting{
+    top: 0;
+    right: 50px;
+}
+.artOptionVotes{
+    position: relative;
+    color: rgba(225, 225, 225, 0.5);
+    display: inline-flex;
+    grid-gap: 15px;
+    align-items: center;
+}
+.q_a_threadAvg{
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    align-items: baseline;
+    grid-gap: 5px;
+    color: var(--mdc-theme-primary);
+    cursor: pointer;
+}
+.q_a_threadAvg .fas{
+    color: #fff;
+}
+
+.articleThumbNails{
+    position: relative;
+    height: auto;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 25px;
+    border: 1px solid rgb(255 255 255 / 30%);
+}
+.articleThumbNails p-image{
+    position: relative;
+    display: grid;
+    height: 100%;
+    width: 100%;
+}
+.articleThumbNails label{
+    position: absolute;
+    background: rgb(0 0 0 / 50%);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: grid;
+    place-items: center;
+    font-size: 24px;
+    color: rgb(225, 225, 225, 0.7);
+    cursor: pointer;
+    text-align: center;
+    z-index: 11;
+}
+.publishedBy {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    grid-gap: 10px;
+    font-size: 20px;
+}
+.publisherHeader {
+    position: relative;
+    display: grid;
+    grid-gap: 10px;
+    line-height: 1.7;
+}
+.publisherColumnGrid{
+    display: grid;
+    grid-gap: 25px;
+    grid-template-columns: 55px 600px;
+}
+.publisherColumn{
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+
+.articleTime{
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+}
+.profileCommentLine{
+    position: relative;
+    margin: auto;
+    background: #fff;
+    width: 1.5px;
+    cursor: pointer;
+    height: 100%;
+    transition: all ease-in-out 0.3s;
+    z-index: 1;
+}
+.profileCommentCircle{
+    background: rgb(68 215 182 / 100%);
+    height: 20px;
+    width: 20px;
+    border-radius: 10px;
+    margin: auto;
+}
+.profileCommentLine:hover{
+    background: rgb(68 215 182 / 100%);
+}
+.ArticleRead{
+    width: 100%;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    overflow: hidden;
+    margin: 0;
+}
+.ArticleRead img{
+    border-radius: 5px;
+    display: grid;
+}
+
+.closeWindow{
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    font-size: 35px !important;
+    color: #fff;
+}

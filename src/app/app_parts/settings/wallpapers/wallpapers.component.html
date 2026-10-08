@@ -1,0 +1,52 @@
+
+<div class="profile_settings_main_div_ctn">
+    <div class="profile_settings_main_div">
+
+        <div class="general_settings_page_ctn">
+            <div class="general_settings_page_ctn_grid">
+            
+                <div class="general_setting_option_ctn">
+                    <div class="set_line_1_header">
+                        <div class="general_setting_title"> Profile Picture </div>
+                    </div>
+                    <div class="general_setting_cover_ctn">
+                        <div class="general_setting_profile"> 
+                            <img src="{{IMG_URL+pfp+'?width=200'}}">
+                        </div>
+                    </div>
+                    <div class="general_settings_pic_option">
+                        <div class="general_settings_pic_change">
+                            <input type="file" name="change" id="profile_change_1" (change)="upload_cover(2, $event)">
+                            <label for="profile_change_1">Change</label>
+                        </div>
+                        <div class="general_settings_pic_delete" (click)="deletePic(2)">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="general_setting_option_ctn">
+                    <div class="set_line_1_header">
+                        <div class="general_setting_title"> Wallpaper </div>
+                    </div>
+                    <div class="general_setting_cover_ctn">
+                        <div class="general_setting_cover"> 
+                            <img src="{{IMG_URL+wallpaper+'?width=500'}}">
+                        </div>
+                    </div>
+                    <div class="general_settings_pic_option">
+                        <div class="general_settings_pic_change">
+                            <input type="file" name="change" id="cover_change_1" (change)="upload_cover(1, $event)">
+                            <label for="cover_change_1">Change</label>
+                        </div>
+                        <div class="general_settings_pic_delete" (click)="deletePic(1)"> 
+                            <i class="fa fa-trash" aria-hidden="true"></i>                        
+                        </div>
+                    </div>
+                </div>
+               
+
+            </div>
+        </div>
+    </div>
+</div>

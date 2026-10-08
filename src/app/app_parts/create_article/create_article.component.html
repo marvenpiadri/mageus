@@ -1,0 +1,290 @@
+<div class="articleCtnScroll">
+  <section class="articleGridSection">
+    <!-- <div class="mageusPublishBar">
+      <span class="saveMessage">Ready to Publish?</span>
+      <div class="actionButtons">
+        <button class="publishNowBtn" (click)="upload_article($event)">Publish Now</button>
+        <button class="publishNowBtn" (click)="upload_article($event)">
+          <i class="{{ uploadStarted ? 'pi pi-spin pi-spinner' : 'pi pi-check' }}"></i> Publish 
+        </button>
+      </div>
+    </div> -->
+    <div class="mageusPublishBar">
+      <span class="saveMessage">{{ uploadStarted ? 'Uploading...' : 'Ready to Publish?' }}</span>
+      <div class="actionButtons">
+        <button class="publishNowBtn" [disabled]="uploadStarted" (click)="upload_article($event)">
+          <i class="pi" [ngClass]="uploadStarted ? 'pi-spin pi-spinner' : 'pi-check'"></i>
+          {{ uploadStarted ? 'Publishing...' : 'Publish' }}
+        </button>
+      </div>
+    </div>
+    <div class="articleGridCtn" #articleContainer>
+      <!-- PHOTO SELECTION SECTION -->
+      <section class="dataInputCtn" #postsCtn *ngIf="!articleID">
+        <div class="dataInputs">
+          <div 
+            class="cdkDropListCtn"
+            cdkDropList
+            cdkDropListOrientation="horizontal"
+            (cdkDropListDropped)="dragMoved($event)"
+          >
+
+            <div class="section-header">
+              <div class="section-title">
+                <i class="fas fa-film"></i> Select Photos
+              </div>
+              <div class="inputLimitCount">{{photographs.length}} / 12</div>
+            </div>
+
+            <div 
+              class="cdkDragCtnSlider" 
+              [style.height.px]="postPrev_height" 
+            >
+              <div class="cardArrow_1" (click)="arrowNav(1)">
+                <i class="fas fa-chevron-left"></i>
+              </div>
+              <div class="cardArrow_2" (click)="arrowNav(2)">
+                <i class="fas fa-chevron-right"></i>
+              </div>
+
+              <div class="cdkDragMainFlex">
+                <ul 
+                  class="cdkDragCtn" 
+                  [style.transform]="'translateX(' + direction + 'px)'"
+                >
+                  <li 
+                    class="cdkDragHolding" 
+                    *ngFor="let pic of photographs; let ind = index"
+                    cdkDrag
+                    [style.width.px]="postPrev_width" 
+                    [style.height.px]="postPrev_height"
+                  >
+                    <div 
+                      class="imageContainerPrev"  
+                      [style.height.px]="postPrev_height"
+                    >
+                      <div 
+                        class="uploaderPhotographContainer" 
+                        [style.width.px]="postPrev_width" 
+                        [style.height.px]="postPrev_height"
+                      >
+                        <div class="deleteMedia" (click)="removePic(ind)">
+                          <i class="fas fa-times"></i>
+                        </div>
+                        <img src="{{pic?.pic}}">
+                      </div>
+                    </div>
+                    <div 
+                      class="dragPlaceHolder" 
+                      *cdkDragPlaceholder 
+                      [style.height.px]="postPrev_height" 
+                      [style.width.px]="postPrev_width"
+                    ></div>
+                  </li>
+
+                  <li 
+                    [style.width.px]="postPrev_width" 
+                    [style.height.px]="postPrev_height"
+                  >
+                    <div class="uploaderSelectFile">
+                      <input 
+                        type="file" 
+                        name="upload" 
+                        id="uploader" 
+                        (change)="preview($event)" 
+                        multiple
+                      >
+                      <label for="uploader">
+                        <i class="fas fa-plus"></i>
+                      </label>
+                    </div>
+                  </li>
+
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ARTICLE INFO SECTION -->
+      <section class="dataInputCtn" #postsCtn [style.width.px]="articleWidth">
+
+        <div class="section-header">
+          <div class="section-title">
+            <i class="fas fa-newspaper"></i> Article Information:
+          </div>
+        </div>
+
+        <div 
+          class="articlePreviewCtn" 
+          #thumbnailContainer 
+          [style.width.px]="articleWidth"
+        >
+          <div 
+            class="{{imageError ? 'articleThumbNailsError' : 'articleThumbNails'}}" 
+            (click)="changeCover()" 
+            *ngIf="includeArticle"
+          >
+            <div class="articleThumbNailsCtn" *ngIf="!image">
+              <i class="fas fa-plus"></i>
+            </div>
+            <div class="articleThumbNailsCtn" *ngIf="image">
+              <img [src]="IMG_URL + image + '?width='+articleWidth">
+            </div>
+          </div>
+        </div>
+
+        <div class="articleCreateCtn">
+
+          <div class="textAreaCtn">
+            <textarea 
+              [(ngModel)]="title" 
+              placeholder="Article's title"
+              pInputText 
+              cdkTextareaAutosize 
+              cdkAutosizeMinRows="1"
+              cdkAutosizeMaxRows="5"
+              [ngClass]="titleError ? 'article_textAreaError' : 'article_textArea'"
+            ></textarea>
+
+            <textarea 
+              [(ngModel)]="sub_title" 
+              placeholder="Article's Sub Title"
+              class="sub_title"
+              pInputText 
+              cdkTextareaAutosize 
+              cdkAutosizeMinRows="1" 
+              cdkAutosizeMaxRows="3"
+            ></textarea>
+          </div>
+
+          <div class="publishedArticleContainer">
+            <div class="card flex justify-content-center gap-2">
+              <p-toast></p-toast>
+              <p-confirmDialog [style]="{width: '50vw'}" [closable]="false"></p-confirmDialog>
+            </div>
+            <div class="div"></div>
+            <div class="div"></div>
+            <div class="div"></div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ARTICLE PARTS SECTION -->
+      <section class="dataInputCtn" #postsCtn [style.width.px]="articleWidth">
+
+        <div class="articleCreateGrid" [style.width.px]="articleWidth">
+          <div class="articleWritingContainer">
+            <div class="publishedArticleContainer">
+
+              <div class="articlePartCtn" *ngFor="let art of article_parts; let ind = index">
+                <div class="articlePart_header">
+                  <div style="
+                    padding: 5px;
+                    border: 1.5px dashed rgb(68 215 182 / 100%);
+                    border-bottom: 0;
+                  "></div>
+
+                  <div class="articleInsertTop">
+                    <div class="articleInsertIcons">
+                      <div class="articleInsertTitle">
+                        <mat-icon class="material-symbols-outlined">widgets</mat-icon>
+                        Insert widgets
+                      </div>
+                      <div class="articleInsertButtons" (click)="addTheImage(ind)">
+                        <span class="insertButton">
+                          <mat-icon class="material-symbols-outlined">view_day</mat-icon>
+                        </span>
+                      </div>
+                      <div class="articleInsertButtons" (click)="addTheSlides(ind)">
+                        <span class="insertButton">
+                          <mat-icon class="material-symbols-outlined">view_carousel</mat-icon>
+                        </span>
+                      </div>
+                      <div class="articleInsertButtons" (click)="embedTheVideo(ind)">
+                        <span class="insertButton">
+                          <mat-icon class="material-symbols-outlined">code_blocks</mat-icon>
+                        </span>
+                      </div>
+                      <div class="articleInsertButtons" (click)="addTheText(ind)">
+                        <span class="insertButton">
+                          <mat-icon class="material-symbols-outlined">title</mat-icon>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div style="
+                    padding: 5px;
+                    border: 1.5px dashed rgb(68 215 182 / 100%);
+                    border-top: 0;
+                  "></div>
+                </div>
+
+                <div class="publisherColumn" *ngIf="art.embed || art.html || art.image || art.slides">
+                  <div class="gridEditOption" 
+                  #editButtons         
+                  cdkOverlayOrigin 
+                  #trigger="cdkOverlayOrigin"
+                  (click)="toggleOptions(ind, art.editBol)"
+                  class="{{art.editBol ? 'postEditShortOn' : 'postEditShort'}}">
+                    <i class="fas fa-ellipsis-h"></i>
+                  </div>
+
+                  <ng-template 
+                  cdkConnectedOverlay
+                  [cdkConnectedOverlayOrigin]="trigger"
+                  [cdkConnectedOverlayOpen]="art.editBol"
+                  [cdkConnectedOverlayPositions]="positions"
+                  [cdkConnectedOverlayHasBackdrop]="true"
+                  (backdropClick)="art.editBol = false"
+                  #tempref
+                  (click)="$event.stopPropagation()">
+                    <div class="optionsContainer">
+                      <div class="listWhite" (click)="editPart(art, ind)">
+                        <i class="fas fa-pen"></i> Edit 
+                      </div>
+                      <div class="listRed" (click)="deletePart(ind)" mat-menu-item>
+                        <i class="fa-solid fa-trash"></i> Delete 
+                      </div>
+                    </div>
+                  </ng-template>
+
+                  <ng-container [ngSwitch]="art.type">
+                    <div class="articlePart" *ngSwitchCase="'embed'" >
+                      <app-article-embed class="articlePartContentEmbed" [embed]="art.embed" [height]="articleHeight" [width]="articleWidth"></app-article-embed>
+                    </div>
+                    <div class="articlePart" *ngSwitchCase="'image'">
+                      <app-article-image class="articlePartContentEmbed"  [src]="IMG_URL + art.image+'?width='+articleWidth"></app-article-image>
+                    </div>
+                    <div class="articlePart" *ngSwitchCase="'text'">
+                      <app-article-text class="articlePartContentEmbed" [html]="art.html"></app-article-text>
+                    </div>
+                    <div class="articlePart" *ngSwitchCase="'slide'">
+                      <app-article-slides class="articlePartContentEmbed" [slides]="art.slides" [height]="carousel_height" [width]="carousel_width"></app-article-slides>
+                    </div>
+                  </ng-container>
+                 
+                </div>
+              </div>
+
+              <div class="card flex justify-content-center gap-2">
+                <p-toast></p-toast>
+                <p-confirmDialog [style]="{width: '50vw'}" [closable]="false"></p-confirmDialog>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        
+      </section>
+
+     
+
+    </div>
+  </section>
+</div>

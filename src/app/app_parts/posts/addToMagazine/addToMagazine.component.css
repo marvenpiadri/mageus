@@ -1,0 +1,67 @@
+.showAllMagazinesCtn{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    overflow: hidden scroll;
+    stroke-width: thin;
+}
+.showAllMagazinesMain{
+    width: 100%;
+    height: auto;
+    padding: 15px;
+}
+.magazineToAddFlex{
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+}
+.magazineToAddFlex:not(:last-of-type){
+    margin-bottom: 15px;
+}
+.magazinecover{
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1.5px solid rgb(255 255 255 / 30%);
+}
+.magazineTitle{
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    line-height: 1.5;
+    margin-bottom: 10px;
+}
+.magazinePageCount{
+    font-size: 16px;
+    color: var(--primary-color);
+    display: flex;
+    grid-gap: 8px;
+    align-items: center;
+    font-weight: bold;
+}
+.magazineAddButton,
+.magazineAddButtonAc{
+    padding: 5px 15px;
+    border: 1.5px solid #fff;
+    cursor: pointer;
+    font-weight: bold;
+    display: table;
+    border-radius: 25px;
+}
+
+.magazineAddButton:hover,
+.magazineAddButtonAc{
+    background: #fff;
+    color: #1d1d1d;
+}
+
+.magazineOptions{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.magazinePageIcon{
+    color: #fff;
+}

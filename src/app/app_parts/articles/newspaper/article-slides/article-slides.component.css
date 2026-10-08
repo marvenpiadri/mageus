@@ -1,0 +1,114 @@
+.deck-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: 60vh;
+  perspective: 1000px;
+}
+
+.deck-card {
+  position: absolute;
+  width: 250px;
+  height: 350px;
+  transition: transform 0.4s ease, z-index 0.4s;
+  will-change: transform;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  cursor: pointer;
+}
+  
+.deck-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.deck-card.active {
+  box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+}
+
+.nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  z-index: 10;
+}
+
+.nav.prev {
+  left: 10px;
+}
+.nav.next {
+  right: 10px;
+}
+  
+.overlay {
+  position: absolute;
+  right: 10px;
+  left: 10px;
+  bottom: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid white;
+  text-decoration: none;
+  color: white !important;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  z-index: 2;
+  border-radius: 20px;
+}
+.overlay:hover {
+  background: #fff;
+  color: #1a1a1a !important;
+}
+.overlay-content mat-icon{
+  flex-grow: 1;
+  display: flex;
+  width: auto;
+  flex: none;
+  font-size: 20px;
+  align-items: center;
+  color: inherit;
+}
+.overlay-content {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  color: inherit;
+}
+.overlay-content p {
+  font-size: 13px;
+  margin: 0;
+  line-height: 1.2;
+  color: inherit;
+  word-wrap: break-word;
+  white-space: nowrap;
+  max-width: calc(100% - 24px); /* subtract icon + gap space */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+  
+.overlay-content span {
+  color: inherit;
+  font-size: 18px;
+}
+  
+.overlay-content p {
+  font-size: 13px;
+  margin: 0;
+  line-height: 1.2;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+  

@@ -1,0 +1,103 @@
+.magArticleCtn{
+    display: table;
+    position: relative;
+    margin: auto;
+    padding: 25px 0;
+}
+.magArticle {
+    display: grid;
+    margin: auto;
+    grid-gap: 25px;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.menuArticles{
+    position: relative;
+}
+
+.menuImageCnt{
+    position: relative;
+}
+.menuLoop{
+    /* scroll-snap-align: center; */
+}
+
+.menuArticlesGrid{
+    display: grid;
+    grid-gap: 15px;
+    align-items: center;
+}
+.menuArticleCover,
+.menuArticleCoverOn{
+    height: 194.625px;
+    width: 100%;
+    overflow: hidden;
+    align-items: center;
+    border-radius: 10px;
+    border: 1px solid rgb(255 255 255 / 30%);
+    transition: all ease-in-out 0.3s;
+}
+.menuArticleCover:hover{
+    border: 1px solid rgb(255 255 255 / 100%);
+}
+.menuArticleCoverOn{
+    border: 3px solid rgb(68 215 182 / 80%);
+}
+.menuArticlePfp,
+.menuArticlePfpOn{
+    height: 35px;
+    width: 35px;
+    border-radius: 35px;
+    border: 1.5px solid rgb(255 255 255 / 30%);
+    overflow: hidden;
+    transition: all ease-in-out .3s;
+}
+.menuArticlePfp:hover{
+    border: 1.5px solid rgb(255 255 255 / 100%);
+}
+.menuArticlePfpOn{
+    border: 2.5px solid rgb(68 215 182 / 100%);
+    box-shadow: 0 0 6px 1px rgb(68 215 182 / 100%);
+}
+.menuArticleInfos{
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 15px;
+}
+.a_title{
+    margin-bottom: 5px;
+    line-height: 1.4;
+    display: flex;    
+    color: rgb(225 225 225 / 80%) !important;
+}
+.a_title:hover{
+    color: rgb(225 225 225 / 100%) !important;
+}
+.a_username{
+    color: rgb(68 215 182 / 80%)  !important;
+}
+.a_username:hover{
+    color: rgb(68 215 182 / 100%)  !important;
+}
+.demistar_is_star{
+    display: inline-block;
+    vertical-align: text-bottom;
+    padding-left: 5px;
+}
+.demistar_is_star .material-icons{
+    color: rgb(255 255 255 / 90%);
+    height: auto;
+    width: auto;
+    font-size: 14px;
+    cursor: pointer;
+    display: block;
+}
+.demistar_is_star .material-icons:hover{
+    color: rgb(255 255 255 / 100%);
+}
+.timingAndViews {
+    color: rgb(255 255 255 / 80%);
+    font-size: 14px;
+    font-weight: normal;
+    margin-bottom: 3px;
+}

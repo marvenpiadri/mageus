@@ -1,0 +1,60 @@
+
+<div class="Magazines" *ngIf="!magEmpty">
+  
+  
+  <div class="cardArrow_1" (click)="arrowNav(1)" *ngIf="posIndex > 0"><i class="fas fa-chevron-left"></i></div>
+  <div class="cardArrow_2" (click)="arrowNav(2)" *ngIf="posIndex < this.magazines.length-1"><i class="fas fa-chevron-right"></i></div>
+  
+  <div class="cardsContainer">
+    
+    <div class="Q-postCtnMid" [style.transform]="'translateX(' + direction + 'px)'" *ngIf="loading">
+      <div class="timeDecksCtn" [style.width.px]="deckWidth" [style.height.px]="deckHeight">
+        <div class="postCardCtn" [style.width.px]="deckWidth" [style.height.px]="deckHeight">
+          <p-skeleton class="postHighlight" width="100%" height="100%"></p-skeleton>
+        </div>
+      </div>
+      <div class="timeDecksCtn" [style.width.px]="deckWidth" [style.height.px]="deckHeight">
+        <div class="postCardCtn" [style.width.px]="deckWidth" [style.height.px]="deckHeight">
+          <p-skeleton class="postHighlight" width="100%" height="100%"></p-skeleton>
+        </div>
+      </div>
+      <div class="timeDecksCtn" [style.width.px]="deckWidth" [style.height.px]="deckHeight">
+        <div class="postCardCtn" [style.width.px]="deckWidth" [style.height.px]="deckHeight">
+          <p-skeleton class="postHighlight" width="100%" height="100%"></p-skeleton>
+        </div>
+      </div>
+      <div class="timeDecksCtn" [style.width.px]="deckWidth" [style.height.px]="deckHeight">
+        <div class="postCardCtn" [style.width.px]="deckWidth" [style.height.px]="deckHeight">
+          <p-skeleton class="postHighlight" width="100%" height="100%"></p-skeleton>
+        </div>
+      </div>
+      <div class="timeDecksCtn" [style.width.px]="deckWidth" [style.height.px]="deckHeight">
+        <div class="postCardCtn" [style.width.px]="deckWidth" [style.height.px]="deckHeight">
+          <p-skeleton class="postHighlight" width="100%" height="100%"></p-skeleton>
+        </div>
+      </div>
+      <div class="timeDecksCtn" [style.width.px]="deckWidth" [style.height.px]="deckHeight">
+        <div class="postCardCtn" [style.width.px]="deckWidth" [style.height.px]="deckHeight">
+          <p-skeleton class="postHighlight" width="100%" height="100%"></p-skeleton>
+        </div>
+      </div>
+    </div>
+
+    <div class="Q-postCtnMid" 
+    [style.transform]="'translateX(' + direction + 'px)'"
+    *ngIf="!loading">
+      <div *ngFor="let dat of magazines" class="timeDecksCtn"  [style.width.px]="deckWidth">
+        <a [routerLink]="['/magazine/'+dat.mag_id]">
+          <div class="postCardCtn">
+            <div class="postHighlight" [style.width.px]="deckWidth" [style.height.px]="deckHeight"> 
+              <img src="{{IMG_URL+dat.cover+'?width='+deckWidth}}">
+            </div>
+            <div class="dateOfDiary"> {{trimTitle(dat.title)}} </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+</div>

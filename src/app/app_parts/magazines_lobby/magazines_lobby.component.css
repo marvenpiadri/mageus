@@ -1,0 +1,25 @@
+.profilePostCtn{
+    min-height: 100%;
+    width: 100%;
+}
+.profileContainerScroll,
+.profileContainerScroll2{
+    position: relative;
+    overflow: hidden;
+    overflow-y: scroll;
+    height: 100%;
+    width: 100%;
+    padding-bottom: 35px;
+}
+
+.publishedArticleContainer{
+    height: 100%;
+}
+.app-magHeader{
+    scroll-snap-align: center;
+    display: table;
+    margin: auto auto auto auto;
+    width: 100%;
+    padding: 35px;
+    border-bottom: 1px solid rgb(255 255 255 / 30%);
+}

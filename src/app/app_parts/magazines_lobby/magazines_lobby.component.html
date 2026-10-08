@@ -1,0 +1,16 @@
+  
+<div class="{{subPath == '' ? 'profileContainerScroll': 'profileContainerScroll2'}}" 
+infiniteScroll
+[infiniteScrollDistance]="2"
+[infiniteScrollThrottle]="50"
+[scrollWindow]="false"
+(scrolled)="onScrollDown()"
+#element>
+
+  <app-magHeader class="app-magHeader"></app-magHeader>
+
+
+  <div class="profilePostCtn">
+    <router-outlet style="display: none;"></router-outlet>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+.postArticleMode{
+    display: table;
+    margin: auto;
+    padding: 60px 0;
+}
+iframe{
+    width: 400px;
+    display: grid;
+    height: 300px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+.embedTitle{
+    color: rgb(255 255 255 / 80%);
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.articleScroll{
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+.articleGlass{
+    width: 100%;
+    min-height: 100%;
+}

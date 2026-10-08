@@ -1,0 +1,15 @@
+textarea {
+    width: 100%;
+    resize: none;
+    background: rgb(0 0 0 / 30%);
+    border: 1px solid rgb(255 255 255 / 30%);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    display: table;
+    width: 100%;
+}
+button.p-element.p-button.p-component {
+    grid-gap: 10px;
+    align-items: center;
+}
