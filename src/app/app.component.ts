@@ -1,14 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { LoadingBarModule, NgxLoadingBar } from '@ngx-loading-bar/core';
 
-@Component({ 
+@Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NgxLoadingBar],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  standalone: true,
+  imports: [RouterOutlet],
+  template: '<router-outlet />'
 })
-export class AppComponent {
-  title = 'mageus';
-}
-  
+export class AppComponent {}
