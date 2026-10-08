@@ -11,14 +11,9 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular/build:application",
           "options": {
-            "outputPath": "dist/mageus",
-            "index": "src/index.html",
             "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
               {
@@ -27,40 +22,29 @@
               }
             ],
             "styles": [
-              "src/styles.css",    
-              "node_modules/highlight.js/styles/github-dark.css",
-              "node_modules/swiper/swiper-bundle.min.css",
-              "node_modules/quill/dist/quill.core.css",
-              "node_modules/quill/dist/quill.bubble.css",
-              "node_modules/quill/dist/quill.snow.css"
+              "src/styles.css"
             ],
-            "scripts": [],
-            "allowedCommonJsDependencies": [
-              "quill",
-              "quill-delta"
-            ]
+            "server": "src/main.server.ts",
+            "outputMode": "server",
+            "ssr": {
+              "entry": "src/server.ts"
+            }
           },
           "configurations": {
             "production": {
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "5mb",
-                  "maximumError": "5mb"              
+                  "maximumWarning": "2mb",
+                  "maximumError": "4mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "20kb",
-                  "maximumError": "40kb"
+                  "maximumWarning": "15kb",
+                  "maximumError": "30kb"
                 }
               ],
-              "outputHashing": "all",
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.development.ts"
-                }
-              ]
+              "outputHashing": "all"
             },
             "development": {
               "optimization": false,
@@ -71,7 +55,7 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
               "buildTarget": "mageus:build:production"
@@ -82,33 +66,8 @@
           },
           "defaultConfiguration": "development"
         },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n"
-        },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
-            "tsConfig": "tsconfig.spec.json",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
-            ],
-            "styles": [
-              "src/styles.css",           
-              "node_modules/highlight.js/styles/github-dark.css",  
-              "node_modules/swiper/swiper-bundle.min.css",
-              "node_modules/quill/dist/quill.core.css",
-              "node_modules/quill/dist/quill.bubble.css",
-              "node_modules/quill/dist/quill.snow.css"
-            ],
-            "scripts": []
-          }
+          "builder": "@angular/build:unit-test"
         }
       }
     }
