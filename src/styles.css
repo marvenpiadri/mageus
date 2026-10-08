@@ -64,6 +64,31 @@ button, input, textarea, select { font: inherit; }
 
 .site-header nav a:hover { color: var(--mageus-text); }
 
+.mood-picker {
+  display: flex;
+  gap: 5px;
+  padding: 4px;
+  border: 1px solid var(--mageus-border);
+  border-radius: 999px;
+  background: rgba(0,0,0,.22);
+  backdrop-filter: blur(14px);
+}
+.mood-picker button {
+  border: 0;
+  border-radius: 999px;
+  padding: 6px 9px;
+  color: var(--mageus-muted);
+  background: transparent;
+  cursor: pointer;
+  font-size: .7rem;
+  text-transform: capitalize;
+}
+.mood-picker button:hover,
+.mood-picker button.active {
+  color: #080a0e;
+  background: var(--mageus-text);
+}
+
 .site-main {
   position: relative;
   z-index: 2;
