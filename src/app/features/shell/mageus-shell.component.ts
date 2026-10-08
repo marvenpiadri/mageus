@@ -15,11 +15,24 @@ import { MoodId } from '../../core/models/article.models';
 
       <header class="site-header">
         <a class="brand" routerLink="/mageus/articles">mageus</a>
+
         <nav aria-label="Main navigation">
           <a routerLink="/mageus/articles">Stories</a>
-          <a routerLink="/mageus/magazines">Magazines</a>
-          <a routerLink="/mageus/store">Store</a>
+          <a routerLink="/magazines">Magazines</a>
+          <a routerLink="/store">Store</a>
         </nav>
+
+        <div class="mood-picker" aria-label="Reading mood">
+          @for (mood of moods; track mood) {
+            <button
+              type="button"
+              [class.active]="moodService.mood() === mood"
+              [attr.aria-label]="'Use ' + mood + ' mood'"
+              (click)="moodService.setMood(mood)">
+              {{ mood }}
+            </button>
+          }
+        </div>
       </header>
 
       <main class="site-main">
@@ -30,4 +43,5 @@ import { MoodId } from '../../core/models/article.models';
 })
 export class MageusShellComponent {
   readonly moodService = inject(MoodService);
+  readonly moods: MoodId[] = ['stars', 'aurora', 'midnight', 'moonlight', 'eclipse', 'nordic'];
 }
