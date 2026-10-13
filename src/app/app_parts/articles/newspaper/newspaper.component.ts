@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, ElementRef, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, ElementRef, HostListener, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { DomSanitizer, Title } from '@angular/platform-browser';
 import { ActivatedRoute, NavigationEnd, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -54,6 +54,7 @@ export class NewspaperComponent implements OnInit, OnDestroy {
   userID: any;
   article_id: any;
   loading: boolean = true;
+  isClosing = false;
   
   positions: ConnectionPositionPair[] = [
     {
@@ -119,7 +120,20 @@ export class NewspaperComponent implements OnInit, OnDestroy {
 
 
   ngOnDestroy() {
-    this.cancelSub.unsubscribe();
+    this.cancelSub?.unsubscribe();
+  }
+
+  closeArticle(): void {
+    if (this.isClosing) return;
+    this.isClosing = true;
+    window.setTimeout(() => {
+      void this.router.navigate(['../../'], { relativeTo: this.activatedRoute });
+    }, 220);
+  }
+
+  @HostListener('document:keydown.escape')
+  onEscapeKey(): void {
+    this.closeArticle();
   }
 
   getArticle() {
