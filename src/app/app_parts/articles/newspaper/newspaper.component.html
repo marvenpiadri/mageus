@@ -1,17 +1,15 @@
 <!-- <app-edit_article *ngIf="editBol"></app-edit_article> -->
 
-<div class="articleContainerScroll">
+<div class="articleContainerScroll" [class.isClosing]="isClosing" role="dialog" aria-modal="true" aria-label="Article reader">
  
    
   <div class="articleContainerAlpha">
     <app-article [data]="post"></app-article>
   </div>
 
-  <a routerLink="../../" routerLinkActive="active">
-    <div class="closeWindow">
-        <i class="fas fa-times"></i>
-      </div>
-  </a>
+  <button type="button" class="closeWindow" aria-label="Close article and return to articles" (click)="closeArticle()">
+    <i class="fas fa-times" aria-hidden="true"></i>
+  </button>
 </div>
 <!-- 
 <div class="postsDoesntExists" *ngIf="!article?.article_id">
